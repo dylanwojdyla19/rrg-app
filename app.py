@@ -190,35 +190,60 @@ for qname, (x0, x1, y0, y1) in TINTS.items():
 fig.add_hline(y=100, line_width=1, line_color="#888")
 fig.add_vline(x=100, line_width=1, line_color="#888")
 
-# One trace per security: line tail + markers fading older -> newer,
-# ticker label pinned to the newest point (the "head").
+# One trace per security: smoothed line tail + markers fading older -> newer,
+# ticker label pinned to the newest point (the "head"), and an arrow showing
+# the direction of travel — the rotation cue.
 for i, (t, xy) in enumerate(plotted):
     color = PALETTE[i % len(PALETTE)]
     n = len(xy)
+    # Per-point customdata: [ticker, date]. The ticker drives click-to-drill;
+    # the date shows in the hover tooltip so every tail dot is identifiable.
+    dates = xy.index.strftime("%b %d, %Y")
     fig.add_trace(go.Scatter(
         x=xy["x"], y=xy["y"],
         mode="lines+markers+text",
         name=t,
-        line=dict(color=color, width=1.5),
+        line=dict(color=color, width=2, shape="spline", smoothing=1.0),
         marker=dict(
             color=color,
-            size=np.linspace(5, 12, n),            # older = small, newest = big
-            opacity=np.linspace(0.25, 1.0, n),     # older = faded, newest = solid
+            size=np.linspace(6, 14, n),            # older = small, newest = big
+            opacity=np.linspace(0.3, 1.0, n),      # older = faded, newest = solid
         ),
         text=[""] * (n - 1) + [f"<b>{t}</b>"],     # label only the head
         textposition="top center",
-        textfont=dict(color=color, size=12),
-        customdata=[t] * n,                        # lets click events identify the security
-        hovertemplate=(f"<b>{t}</b> · %{{customdata}}<br>"
-                       "RS-Ratio %{x:.2f} · RS-Mom %{y:.2f}<extra></extra>"),
+        textfont=dict(color=color, size=13),
+        customdata=np.column_stack([[t] * n, dates]),
+        hovertemplate=(f"<b>{t}</b> · week ending %{{customdata[1]}}<br>"
+                       "RS-Ratio %{x:.2f} · RS-Momentum %{y:.2f}<extra></extra>"),
     ))
+    # Direction arrow: consecutive weekly points sit almost on top of each
+    # other, so an arrow BETWEEN them is invisible. Instead, project a short
+    # arrow FORWARD from the head along the last move's direction — a clear
+    # "this is where it's rotating" cue.
+    if n >= 2:
+        dx = xy["x"].iloc[-1] - xy["x"].iloc[-2]
+        dy = xy["y"].iloc[-1] - xy["y"].iloc[-2]
+        norm = (dx**2 + dy**2) ** 0.5
+        if norm > 0:
+            reach = span * 0.11  # arrow length ~11% of the plot's half-width
+            fig.add_annotation(
+                ax=xy["x"].iloc[-1], ay=xy["y"].iloc[-1],           # from the head…
+                x=xy["x"].iloc[-1] + dx / norm * reach,             # …out along the
+                y=xy["y"].iloc[-1] + dy / norm * reach,             # direction of travel
+                xref="x", yref="y", axref="x", ayref="y",
+                showarrow=True, arrowhead=3, arrowsize=1.5, arrowwidth=1.4,
+                arrowcolor=color, standoff=0, startstandoff=9, text="",
+            )
 
 fig.update_layout(
-    height=640,
+    height=800,
+    showlegend=False,  # heads are labeled directly; the table below lists everything
     xaxis=dict(title="JdK RS-Ratio (relative trend)", range=[lo, hi], zeroline=False),
-    yaxis=dict(title="JdK RS-Momentum (rate of change)", range=[lo, hi], zeroline=False),
-    legend=dict(orientation="h", yanchor="bottom", y=1.02),
-    margin=dict(l=10, r=10, t=10, b=10),
+    # scaleanchor keeps 1 unit of x = 1 unit of y, so rotation reads as
+    # rotation instead of being stretched by the plot's aspect ratio.
+    yaxis=dict(title="JdK RS-Momentum (rate of change)", range=[lo, hi],
+               zeroline=False, scaleanchor="x", scaleratio=1),
+    margin=dict(l=10, r=10, t=30, b=10),
     clickmode="event+select",
     dragmode="pan",
 )
@@ -295,10 +320,22 @@ if drillable:
         st.rerun()
 
 # ---------------------------------------------------------------------------
-# Table: current universe sorted by RS-Ratio desc, with rotation velocity.
+# Table: current universe sorted by RS-Ratio desc, with rotation velocity
+# and a direction arrow (which way the head moved over the last observation).
 # ---------------------------------------------------------------------------
 velocity_lookback = 20 if daily_mode else 4  # "4-week" change in both engines
 velocity = calc.rotation_velocity(ratio, lookback=velocity_lookback)
+
+
+def _heading_arrow(t: str) -> str:
+    """Compass arrow for the last week's movement on the RRG plane."""
+    r, m = ratio[t].dropna(), momentum[t].dropna()
+    if len(r) < 2 or len(m) < 2:
+        return ""
+    dx, dy = r.iloc[-1] - r.iloc[-2], m.iloc[-1] - m.iloc[-2]
+    return {(1, 1): "↗", (1, 0): "↘", (0, 1): "↖", (0, 0): "↙"}[(int(dx > 0), int(dy > 0))]
+
+
 rows = []
 for t in ratio.columns:
     r, m = ratio[t].iloc[-1], momentum[t].iloc[-1]
@@ -308,12 +345,34 @@ for t in ratio.columns:
         "Ticker": t,
         "Name": by_ticker.get(t, {}).get("name", ""),
         "Quadrant": quadrant.classify(r, m),
+        "Heading": _heading_arrow(t),
         "RS-Ratio": round(r, 2),
         "RS-Momentum": round(m, 2),
         "Δ RS-Ratio (4w)": round(velocity[t], 2) if pd.notna(velocity[t]) else None,
     })
 table = pd.DataFrame(rows).sort_values("RS-Ratio", ascending=False, ignore_index=True)
-st.dataframe(table, use_container_width=True, hide_index=True)
+
+# Color the quadrant column with the pinned Section-4 colors so the table
+# reads at a glance like the chart does.
+styled = table.style.map(
+    lambda q: f"color: {quadrant.QUADRANT_COLORS.get(q, '')}; font-weight: 700;",
+    subset=["Quadrant"],
+).format({"RS-Ratio": "{:.2f}", "RS-Momentum": "{:.2f}", "Δ RS-Ratio (4w)": "{:+.2f}"})
+st.dataframe(styled, use_container_width=True, hide_index=True)
+
+with st.expander("How to read this chart"):
+    st.markdown(
+        """
+- Everything is measured **relative to the benchmark** — not absolute price. Right of
+  center = stronger trend than the benchmark; above center = that strength is accelerating.
+- Securities tend to rotate **clockwise**: Improving (↖ blue) → Leading (↗ green) →
+  Weakening (↘ yellow) → Lagging (↙ red) → back to Improving.
+- The **tail** is the trail of recent weekly readings (small/faded = older). The arrow on
+  the big dot shows the current direction of travel. Hover any dot for its date and values.
+- **Click a dot** (or use the dropdown) to drill into what's inside it; use the
+  breadcrumbs at the top to come back up.
+        """
+    )
 
 # ---------------------------------------------------------------------------
 # Footer disclosure (pinned wording, Section 7)
