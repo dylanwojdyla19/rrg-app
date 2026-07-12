@@ -1,0 +1,564 @@
+{
+  "_comment": "Full top-down RRG universe (Section 5). Structure: nodes[key] = one drillable level with its own benchmark. A member's 'drill' points to the node key one level down; members without 'drill' are terminal (stocks). Stock lists are STATIC top-holdings snapshots refreshed manually — see holdings_as_of on each stock node and the refresh note in README.",
+  "root": "asset_classes",
+  "nodes": {
+    "asset_classes": {
+      "label": "Asset Classes",
+      "benchmark": "ACWI",
+      "members": [
+        { "ticker": "SPY", "name": "US Equities", "drill": "sectors" },
+        { "ticker": "AGG", "name": "US Bonds" },
+        { "ticker": "DBC", "name": "Commodities" },
+        { "ticker": "GLD", "name": "Gold" },
+        { "ticker": "VNQ", "name": "Real Estate" }
+      ]
+    },
+
+    "sectors": {
+      "label": "US Sectors",
+      "benchmark": "SPY",
+      "members": [
+        { "ticker": "XLK", "name": "Technology", "drill": "sub_xlk" },
+        { "ticker": "XLF", "name": "Financials", "drill": "sub_xlf" },
+        { "ticker": "XLV", "name": "Health Care", "drill": "sub_xlv" },
+        { "ticker": "XLE", "name": "Energy", "drill": "sub_xle" },
+        { "ticker": "XLI", "name": "Industrials", "drill": "sub_xli" },
+        { "ticker": "XLY", "name": "Consumer Discretionary", "drill": "sub_xly" },
+        { "ticker": "XLP", "name": "Consumer Staples", "drill": "stk_xlp" },
+        { "ticker": "XLB", "name": "Materials", "drill": "sub_xlb" },
+        { "ticker": "XLU", "name": "Utilities", "drill": "stk_xlu" },
+        { "ticker": "XLRE", "name": "Real Estate", "drill": "stk_xlre" },
+        { "ticker": "XLC", "name": "Communication Services", "drill": "sub_xlc" }
+      ]
+    },
+
+    "sub_xlk": {
+      "label": "Technology Subsectors",
+      "benchmark": "XLK",
+      "members": [
+        { "ticker": "SMH", "name": "Semiconductors", "drill": "stk_smh" },
+        { "ticker": "IGV", "name": "Software", "drill": "stk_igv" },
+        { "ticker": "SKYY", "name": "Cloud", "drill": "stk_skyy" },
+        { "ticker": "CIBR", "name": "Cybersecurity", "drill": "stk_cibr" }
+      ]
+    },
+    "sub_xlf": {
+      "label": "Financials Subsectors",
+      "benchmark": "XLF",
+      "members": [
+        { "ticker": "KBE", "name": "Banks", "drill": "stk_kbe" },
+        { "ticker": "KIE", "name": "Insurance", "drill": "stk_kie" },
+        { "ticker": "IAI", "name": "Broker-Dealers", "drill": "stk_iai" }
+      ]
+    },
+    "sub_xlv": {
+      "label": "Health Care Subsectors",
+      "benchmark": "XLV",
+      "members": [
+        { "ticker": "IBB", "name": "Biotech", "drill": "stk_ibb" },
+        { "ticker": "IHI", "name": "Medical Devices", "drill": "stk_ihi" },
+        { "ticker": "XPH", "name": "Pharma", "drill": "stk_xph" }
+      ]
+    },
+    "sub_xle": {
+      "label": "Energy Subsectors",
+      "benchmark": "XLE",
+      "members": [
+        { "ticker": "XOP", "name": "Exploration & Production", "drill": "stk_xop" },
+        { "ticker": "OIH", "name": "Oil Services", "drill": "stk_oih" },
+        { "ticker": "TAN", "name": "Solar", "drill": "stk_tan" }
+      ]
+    },
+    "sub_xli": {
+      "label": "Industrials Subsectors",
+      "benchmark": "XLI",
+      "members": [
+        { "ticker": "ITA", "name": "Aerospace & Defense", "drill": "stk_ita" },
+        { "ticker": "IYT", "name": "Transports", "drill": "stk_iyt" },
+        { "ticker": "PAVE", "name": "Infrastructure", "drill": "stk_pave" }
+      ]
+    },
+    "sub_xly": {
+      "label": "Consumer Discretionary Subsectors",
+      "benchmark": "XLY",
+      "members": [
+        { "ticker": "XRT", "name": "Retail", "drill": "stk_xrt" },
+        { "ticker": "PEJ", "name": "Leisure & Entertainment", "drill": "stk_pej" },
+        { "ticker": "ITB", "name": "Homebuilders", "drill": "stk_itb" }
+      ]
+    },
+    "sub_xlc": {
+      "label": "Communication Services Subsectors",
+      "benchmark": "XLC",
+      "members": [
+        { "ticker": "SOCL", "name": "Social Media", "drill": "stk_socl" },
+        { "ticker": "PBS", "name": "Media", "drill": "stk_pbs" }
+      ]
+    },
+    "sub_xlb": {
+      "label": "Materials Subsectors",
+      "benchmark": "XLB",
+      "members": [
+        { "ticker": "GDX", "name": "Gold Miners", "drill": "stk_gdx" },
+        { "ticker": "COPX", "name": "Copper Miners", "drill": "stk_copx" },
+        { "ticker": "LIT", "name": "Lithium", "drill": "stk_lit" }
+      ]
+    },
+
+    "stk_smh": {
+      "label": "Semiconductor Stocks",
+      "benchmark": "SMH",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "NVDA", "name": "NVIDIA" },
+        { "ticker": "TSM", "name": "Taiwan Semi" },
+        { "ticker": "AVGO", "name": "Broadcom" },
+        { "ticker": "AMD", "name": "AMD" },
+        { "ticker": "ASML", "name": "ASML" },
+        { "ticker": "QCOM", "name": "Qualcomm" },
+        { "ticker": "TXN", "name": "Texas Instruments" },
+        { "ticker": "AMAT", "name": "Applied Materials" },
+        { "ticker": "LRCX", "name": "Lam Research" },
+        { "ticker": "MU", "name": "Micron" }
+      ]
+    },
+    "stk_igv": {
+      "label": "Software Stocks",
+      "benchmark": "IGV",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "MSFT", "name": "Microsoft" },
+        { "ticker": "CRM", "name": "Salesforce" },
+        { "ticker": "ORCL", "name": "Oracle" },
+        { "ticker": "ADBE", "name": "Adobe" },
+        { "ticker": "NOW", "name": "ServiceNow" },
+        { "ticker": "INTU", "name": "Intuit" },
+        { "ticker": "PLTR", "name": "Palantir" },
+        { "ticker": "PANW", "name": "Palo Alto Networks" },
+        { "ticker": "SNPS", "name": "Synopsys" },
+        { "ticker": "CDNS", "name": "Cadence" }
+      ]
+    },
+    "stk_skyy": {
+      "label": "Cloud Stocks",
+      "benchmark": "SKYY",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "MSFT", "name": "Microsoft" },
+        { "ticker": "ORCL", "name": "Oracle" },
+        { "ticker": "AMZN", "name": "Amazon" },
+        { "ticker": "GOOGL", "name": "Alphabet" },
+        { "ticker": "IBM", "name": "IBM" },
+        { "ticker": "CSCO", "name": "Cisco" },
+        { "ticker": "NTAP", "name": "NetApp" },
+        { "ticker": "AKAM", "name": "Akamai" },
+        { "ticker": "DDOG", "name": "Datadog" },
+        { "ticker": "NET", "name": "Cloudflare" }
+      ]
+    },
+    "stk_cibr": {
+      "label": "Cybersecurity Stocks",
+      "benchmark": "CIBR",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "PANW", "name": "Palo Alto Networks" },
+        { "ticker": "CRWD", "name": "CrowdStrike" },
+        { "ticker": "CSCO", "name": "Cisco" },
+        { "ticker": "ZS", "name": "Zscaler" },
+        { "ticker": "FTNT", "name": "Fortinet" },
+        { "ticker": "OKTA", "name": "Okta" },
+        { "ticker": "CHKP", "name": "Check Point" },
+        { "ticker": "S", "name": "SentinelOne" },
+        { "ticker": "GEN", "name": "Gen Digital" },
+        { "ticker": "QLYS", "name": "Qualys" }
+      ]
+    },
+    "stk_kbe": {
+      "label": "Bank Stocks",
+      "benchmark": "KBE",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "JPM", "name": "JPMorgan" },
+        { "ticker": "BAC", "name": "Bank of America" },
+        { "ticker": "WFC", "name": "Wells Fargo" },
+        { "ticker": "C", "name": "Citigroup" },
+        { "ticker": "USB", "name": "US Bancorp" },
+        { "ticker": "PNC", "name": "PNC" },
+        { "ticker": "TFC", "name": "Truist" },
+        { "ticker": "FITB", "name": "Fifth Third" },
+        { "ticker": "HBAN", "name": "Huntington" },
+        { "ticker": "RF", "name": "Regions" }
+      ]
+    },
+    "stk_kie": {
+      "label": "Insurance Stocks",
+      "benchmark": "KIE",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "PGR", "name": "Progressive" },
+        { "ticker": "CB", "name": "Chubb" },
+        { "ticker": "TRV", "name": "Travelers" },
+        { "ticker": "ALL", "name": "Allstate" },
+        { "ticker": "AIG", "name": "AIG" },
+        { "ticker": "MET", "name": "MetLife" },
+        { "ticker": "PRU", "name": "Prudential" },
+        { "ticker": "AFL", "name": "Aflac" },
+        { "ticker": "HIG", "name": "Hartford" },
+        { "ticker": "CINF", "name": "Cincinnati Financial" }
+      ]
+    },
+    "stk_iai": {
+      "label": "Broker-Dealer Stocks",
+      "benchmark": "IAI",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "GS", "name": "Goldman Sachs" },
+        { "ticker": "MS", "name": "Morgan Stanley" },
+        { "ticker": "SCHW", "name": "Charles Schwab" },
+        { "ticker": "IBKR", "name": "Interactive Brokers" },
+        { "ticker": "COIN", "name": "Coinbase" },
+        { "ticker": "CME", "name": "CME Group" },
+        { "ticker": "ICE", "name": "Intercontinental Exchange" },
+        { "ticker": "NDAQ", "name": "Nasdaq" },
+        { "ticker": "CBOE", "name": "Cboe" },
+        { "ticker": "HOOD", "name": "Robinhood" }
+      ]
+    },
+    "stk_ibb": {
+      "label": "Biotech Stocks",
+      "benchmark": "IBB",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "GILD", "name": "Gilead" },
+        { "ticker": "VRTX", "name": "Vertex" },
+        { "ticker": "AMGN", "name": "Amgen" },
+        { "ticker": "REGN", "name": "Regeneron" },
+        { "ticker": "ALNY", "name": "Alnylam" },
+        { "ticker": "BIIB", "name": "Biogen" },
+        { "ticker": "MRNA", "name": "Moderna" },
+        { "ticker": "INCY", "name": "Incyte" },
+        { "ticker": "NBIX", "name": "Neurocrine" },
+        { "ticker": "UTHR", "name": "United Therapeutics" }
+      ]
+    },
+    "stk_ihi": {
+      "label": "Medical Device Stocks",
+      "benchmark": "IHI",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "ABT", "name": "Abbott" },
+        { "ticker": "ISRG", "name": "Intuitive Surgical" },
+        { "ticker": "SYK", "name": "Stryker" },
+        { "ticker": "MDT", "name": "Medtronic" },
+        { "ticker": "BSX", "name": "Boston Scientific" },
+        { "ticker": "EW", "name": "Edwards Lifesciences" },
+        { "ticker": "BDX", "name": "Becton Dickinson" },
+        { "ticker": "DXCM", "name": "Dexcom" },
+        { "ticker": "GEHC", "name": "GE HealthCare" },
+        { "ticker": "RMD", "name": "ResMed" }
+      ]
+    },
+    "stk_xph": {
+      "label": "Pharma Stocks",
+      "benchmark": "XPH",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "LLY", "name": "Eli Lilly" },
+        { "ticker": "JNJ", "name": "Johnson & Johnson" },
+        { "ticker": "MRK", "name": "Merck" },
+        { "ticker": "PFE", "name": "Pfizer" },
+        { "ticker": "ABBV", "name": "AbbVie" },
+        { "ticker": "BMY", "name": "Bristol-Myers Squibb" },
+        { "ticker": "ZTS", "name": "Zoetis" },
+        { "ticker": "VTRS", "name": "Viatris" },
+        { "ticker": "ELAN", "name": "Elanco" },
+        { "ticker": "JAZZ", "name": "Jazz Pharma" }
+      ]
+    },
+    "stk_xop": {
+      "label": "E&P Stocks",
+      "benchmark": "XOP",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "COP", "name": "ConocoPhillips" },
+        { "ticker": "EOG", "name": "EOG Resources" },
+        { "ticker": "OXY", "name": "Occidental" },
+        { "ticker": "DVN", "name": "Devon" },
+        { "ticker": "FANG", "name": "Diamondback" },
+        { "ticker": "EQT", "name": "EQT Corp" },
+        { "ticker": "APA", "name": "APA Corp" },
+        { "ticker": "MTDR", "name": "Matador" },
+        { "ticker": "PR", "name": "Permian Resources" },
+        { "ticker": "AR", "name": "Antero Resources" }
+      ]
+    },
+    "stk_oih": {
+      "label": "Oil Services Stocks",
+      "benchmark": "OIH",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "SLB", "name": "SLB (Schlumberger)" },
+        { "ticker": "HAL", "name": "Halliburton" },
+        { "ticker": "BKR", "name": "Baker Hughes" },
+        { "ticker": "TS", "name": "Tenaris" },
+        { "ticker": "NOV", "name": "NOV Inc" },
+        { "ticker": "LBRT", "name": "Liberty Energy" },
+        { "ticker": "FTI", "name": "TechnipFMC" },
+        { "ticker": "RIG", "name": "Transocean" },
+        { "ticker": "HP", "name": "Helmerich & Payne" },
+        { "ticker": "WFRD", "name": "Weatherford" }
+      ]
+    },
+    "stk_tan": {
+      "label": "Solar Stocks",
+      "benchmark": "TAN",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "FSLR", "name": "First Solar" },
+        { "ticker": "ENPH", "name": "Enphase" },
+        { "ticker": "NXT", "name": "Nextracker" },
+        { "ticker": "RUN", "name": "Sunrun" },
+        { "ticker": "SEDG", "name": "SolarEdge" },
+        { "ticker": "ARRY", "name": "Array Technologies" },
+        { "ticker": "SHLS", "name": "Shoals" },
+        { "ticker": "CSIQ", "name": "Canadian Solar" },
+        { "ticker": "JKS", "name": "JinkoSolar" },
+        { "ticker": "DQ", "name": "Daqo New Energy" }
+      ]
+    },
+    "stk_ita": {
+      "label": "Aerospace & Defense Stocks",
+      "benchmark": "ITA",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "GE", "name": "GE Aerospace" },
+        { "ticker": "RTX", "name": "RTX" },
+        { "ticker": "BA", "name": "Boeing" },
+        { "ticker": "HWM", "name": "Howmet" },
+        { "ticker": "TDG", "name": "TransDigm" },
+        { "ticker": "LMT", "name": "Lockheed Martin" },
+        { "ticker": "NOC", "name": "Northrop Grumman" },
+        { "ticker": "GD", "name": "General Dynamics" },
+        { "ticker": "AXON", "name": "Axon" },
+        { "ticker": "LHX", "name": "L3Harris" }
+      ]
+    },
+    "stk_iyt": {
+      "label": "Transport Stocks",
+      "benchmark": "IYT",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "UNP", "name": "Union Pacific" },
+        { "ticker": "UPS", "name": "UPS" },
+        { "ticker": "FDX", "name": "FedEx" },
+        { "ticker": "ODFL", "name": "Old Dominion" },
+        { "ticker": "CSX", "name": "CSX" },
+        { "ticker": "NSC", "name": "Norfolk Southern" },
+        { "ticker": "DAL", "name": "Delta" },
+        { "ticker": "UAL", "name": "United Airlines" },
+        { "ticker": "JBHT", "name": "J.B. Hunt" },
+        { "ticker": "XPO", "name": "XPO" }
+      ]
+    },
+    "stk_pave": {
+      "label": "Infrastructure Stocks",
+      "benchmark": "PAVE",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "ETN", "name": "Eaton" },
+        { "ticker": "TT", "name": "Trane" },
+        { "ticker": "PH", "name": "Parker Hannifin" },
+        { "ticker": "PWR", "name": "Quanta Services" },
+        { "ticker": "MLM", "name": "Martin Marietta" },
+        { "ticker": "VMC", "name": "Vulcan Materials" },
+        { "ticker": "URI", "name": "United Rentals" },
+        { "ticker": "NUE", "name": "Nucor" },
+        { "ticker": "DE", "name": "Deere" },
+        { "ticker": "EMR", "name": "Emerson" }
+      ]
+    },
+    "stk_xrt": {
+      "label": "Retail Stocks",
+      "benchmark": "XRT",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "TJX", "name": "TJX" },
+        { "ticker": "ROST", "name": "Ross Stores" },
+        { "ticker": "BBY", "name": "Best Buy" },
+        { "ticker": "DKS", "name": "Dick's Sporting Goods" },
+        { "ticker": "ULTA", "name": "Ulta Beauty" },
+        { "ticker": "BURL", "name": "Burlington" },
+        { "ticker": "FIVE", "name": "Five Below" },
+        { "ticker": "ANF", "name": "Abercrombie & Fitch" },
+        { "ticker": "WSM", "name": "Williams-Sonoma" },
+        { "ticker": "CASY", "name": "Casey's" }
+      ]
+    },
+    "stk_pej": {
+      "label": "Leisure & Entertainment Stocks",
+      "benchmark": "PEJ",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "ABNB", "name": "Airbnb" },
+        { "ticker": "BKNG", "name": "Booking" },
+        { "ticker": "RCL", "name": "Royal Caribbean" },
+        { "ticker": "CCL", "name": "Carnival" },
+        { "ticker": "MAR", "name": "Marriott" },
+        { "ticker": "HLT", "name": "Hilton" },
+        { "ticker": "LYV", "name": "Live Nation" },
+        { "ticker": "EXPE", "name": "Expedia" },
+        { "ticker": "DKNG", "name": "DraftKings" },
+        { "ticker": "CMG", "name": "Chipotle" }
+      ]
+    },
+    "stk_itb": {
+      "label": "Homebuilder Stocks",
+      "benchmark": "ITB",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "DHI", "name": "D.R. Horton" },
+        { "ticker": "LEN", "name": "Lennar" },
+        { "ticker": "NVR", "name": "NVR" },
+        { "ticker": "PHM", "name": "PulteGroup" },
+        { "ticker": "HD", "name": "Home Depot" },
+        { "ticker": "LOW", "name": "Lowe's" },
+        { "ticker": "SHW", "name": "Sherwin-Williams" },
+        { "ticker": "TOL", "name": "Toll Brothers" },
+        { "ticker": "MAS", "name": "Masco" },
+        { "ticker": "KBH", "name": "KB Home" }
+      ]
+    },
+    "stk_socl": {
+      "label": "Social Media Stocks",
+      "benchmark": "SOCL",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "META", "name": "Meta" },
+        { "ticker": "SNAP", "name": "Snap" },
+        { "ticker": "PINS", "name": "Pinterest" },
+        { "ticker": "RDDT", "name": "Reddit" },
+        { "ticker": "SPOT", "name": "Spotify" },
+        { "ticker": "MTCH", "name": "Match Group" },
+        { "ticker": "BMBL", "name": "Bumble" },
+        { "ticker": "YELP", "name": "Yelp" },
+        { "ticker": "GRND", "name": "Grindr" },
+        { "ticker": "DUOL", "name": "Duolingo" }
+      ]
+    },
+    "stk_pbs": {
+      "label": "Media Stocks",
+      "benchmark": "PBS",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "GOOGL", "name": "Alphabet" },
+        { "ticker": "META", "name": "Meta" },
+        { "ticker": "NFLX", "name": "Netflix" },
+        { "ticker": "DIS", "name": "Disney" },
+        { "ticker": "CMCSA", "name": "Comcast" },
+        { "ticker": "LYV", "name": "Live Nation" },
+        { "ticker": "EA", "name": "Electronic Arts" },
+        { "ticker": "TTWO", "name": "Take-Two" },
+        { "ticker": "WBD", "name": "Warner Bros. Discovery" },
+        { "ticker": "FOXA", "name": "Fox" }
+      ]
+    },
+    "stk_gdx": {
+      "label": "Gold Miner Stocks",
+      "benchmark": "GDX",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "NEM", "name": "Newmont" },
+        { "ticker": "AEM", "name": "Agnico Eagle" },
+        { "ticker": "WPM", "name": "Wheaton Precious Metals" },
+        { "ticker": "FNV", "name": "Franco-Nevada" },
+        { "ticker": "GFI", "name": "Gold Fields" },
+        { "ticker": "KGC", "name": "Kinross" },
+        { "ticker": "AU", "name": "AngloGold Ashanti" },
+        { "ticker": "RGLD", "name": "Royal Gold" },
+        { "ticker": "HMY", "name": "Harmony Gold" },
+        { "ticker": "PAAS", "name": "Pan American Silver" }
+      ]
+    },
+    "stk_copx": {
+      "label": "Copper Miner Stocks",
+      "benchmark": "COPX",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "FCX", "name": "Freeport-McMoRan" },
+        { "ticker": "SCCO", "name": "Southern Copper" },
+        { "ticker": "TECK", "name": "Teck Resources" },
+        { "ticker": "HBM", "name": "Hudbay Minerals" },
+        { "ticker": "ERO", "name": "Ero Copper" },
+        { "ticker": "BHP", "name": "BHP" },
+        { "ticker": "RIO", "name": "Rio Tinto" },
+        { "ticker": "TGB", "name": "Taseko Mines" }
+      ]
+    },
+    "stk_lit": {
+      "label": "Lithium & Battery Stocks",
+      "benchmark": "LIT",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "ALB", "name": "Albemarle" },
+        { "ticker": "SQM", "name": "SQM" },
+        { "ticker": "TSLA", "name": "Tesla" },
+        { "ticker": "GM", "name": "General Motors" },
+        { "ticker": "LAC", "name": "Lithium Americas" },
+        { "ticker": "SGML", "name": "Sigma Lithium" },
+        { "ticker": "ENS", "name": "EnerSys" },
+        { "ticker": "MP", "name": "MP Materials" }
+      ]
+    },
+    "stk_xlp": {
+      "label": "Consumer Staples Stocks",
+      "benchmark": "XLP",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "PG", "name": "Procter & Gamble" },
+        { "ticker": "COST", "name": "Costco" },
+        { "ticker": "WMT", "name": "Walmart" },
+        { "ticker": "KO", "name": "Coca-Cola" },
+        { "ticker": "PM", "name": "Philip Morris" },
+        { "ticker": "PEP", "name": "PepsiCo" },
+        { "ticker": "MDLZ", "name": "Mondelez" },
+        { "ticker": "MO", "name": "Altria" },
+        { "ticker": "CL", "name": "Colgate-Palmolive" },
+        { "ticker": "KMB", "name": "Kimberly-Clark" }
+      ]
+    },
+    "stk_xlu": {
+      "label": "Utilities Stocks",
+      "benchmark": "XLU",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "NEE", "name": "NextEra" },
+        { "ticker": "CEG", "name": "Constellation Energy" },
+        { "ticker": "SO", "name": "Southern Company" },
+        { "ticker": "DUK", "name": "Duke Energy" },
+        { "ticker": "VST", "name": "Vistra" },
+        { "ticker": "D", "name": "Dominion" },
+        { "ticker": "AEP", "name": "American Electric Power" },
+        { "ticker": "SRE", "name": "Sempra" },
+        { "ticker": "EXC", "name": "Exelon" },
+        { "ticker": "XEL", "name": "Xcel" }
+      ]
+    },
+    "stk_xlre": {
+      "label": "Real Estate Stocks",
+      "benchmark": "XLRE",
+      "holdings_as_of": "2026-01-01",
+      "members": [
+        { "ticker": "PLD", "name": "Prologis" },
+        { "ticker": "AMT", "name": "American Tower" },
+        { "ticker": "EQIX", "name": "Equinix" },
+        { "ticker": "WELL", "name": "Welltower" },
+        { "ticker": "SPG", "name": "Simon Property" },
+        { "ticker": "DLR", "name": "Digital Realty" },
+        { "ticker": "PSA", "name": "Public Storage" },
+        { "ticker": "O", "name": "Realty Income" },
+        { "ticker": "CCI", "name": "Crown Castle" },
+        { "ticker": "VICI", "name": "VICI Properties" }
+      ]
+    }
+  }
+}

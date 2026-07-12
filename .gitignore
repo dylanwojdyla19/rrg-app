@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Machine-specific TLS bundle (regenerate with scripts/make_ca_bundle.ps1)
+config/windows-ca-bundle.pem
+
+# Streamlit local secrets
+.streamlit/secrets.toml
