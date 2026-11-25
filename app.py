@@ -1,7 +1,7 @@
 """
 app.py — Streamlit UI for the RRG sector-rotation app (Section 6, pinned behavior).
 
-Top-down drill path: Asset Classes -> Sectors -> Subsectors -> Stocks.
+Equity-rotation drill path: US Sectors (vs SPY) -> Subsectors -> Stocks.
 The math NEVER changes with the timeframe filter — it only changes how many
 trailing weekly observations (the "tail") are drawn. The one exception is the
 clearly-labeled "Daily RRG" toggle on the 4-week view, which reruns the whole
@@ -47,7 +47,11 @@ PALETTE = [
 # Navigation state: a list of (node_key, crumb_label) tuples, root first.
 # Drilling appends; clicking a breadcrumb truncates.
 # ---------------------------------------------------------------------------
-if "path" not in st.session_state:
+# Reset if there's no path yet, or if a saved path points at a level that no
+# longer exists in universe.json (e.g. after the universe is edited).
+if ("path" not in st.session_state
+        or st.session_state.path[0][0] != ROOT_KEY
+        or any(k not in NODES for k, _ in st.session_state.path)):
     st.session_state.path = [(ROOT_KEY, NODES[ROOT_KEY]["label"])]
 
 node_key, _ = st.session_state.path[-1]

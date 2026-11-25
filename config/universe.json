@@ -1,19 +1,7 @@
 {
-  "_comment": "Full top-down RRG universe (Section 5). Structure: nodes[key] = one drillable level with its own benchmark. A member's 'drill' points to the node key one level down; members without 'drill' are terminal (stocks). Stock lists are STATIC top-holdings snapshots refreshed manually — see holdings_as_of on each stock node and the refresh note in README.",
-  "root": "asset_classes",
+  "_comment": "Equity-rotation RRG universe: US sectors vs SPY at the top, then subsectors, then stocks. Structure: nodes[key] = one drillable level with its own benchmark. A member's 'drill' points to the node key one level down; members without 'drill' are terminal (stocks). Stock lists are STATIC top-holdings snapshots refreshed manually — see holdings_as_of on each stock node and the refresh note in README. (The original asset-class top level — SPY/AGG/DBC/GLD/VNQ vs ACWI — was removed on 2026-11-24 to focus on equity rotation; it is in git history if ever wanted back.)",
+  "root": "sectors",
   "nodes": {
-    "asset_classes": {
-      "label": "Asset Classes",
-      "benchmark": "ACWI",
-      "members": [
-        { "ticker": "SPY", "name": "US Equities", "drill": "sectors" },
-        { "ticker": "AGG", "name": "US Bonds" },
-        { "ticker": "DBC", "name": "Commodities" },
-        { "ticker": "GLD", "name": "Gold" },
-        { "ticker": "VNQ", "name": "Real Estate" }
-      ]
-    },
-
     "sectors": {
       "label": "US Sectors",
       "benchmark": "SPY",

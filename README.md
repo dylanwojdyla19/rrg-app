@@ -1,8 +1,10 @@
 # RRG — Sector Rotation Web App
 
-A Relative Rotation Graph (RRG) web app implementing Julius de Kempenaer's top-down
-methodology: **Asset Classes → US Sectors → Subsectors → Stocks**, each level plotted
-against its own benchmark on a JdK RS-Ratio × RS-Momentum plane.
+A Relative Rotation Graph (RRG) web app for **US equity rotation**, using Julius de
+Kempenaer's top-down methodology: **US Sectors (vs SPY) → Subsectors → Stocks**, each
+level plotted against its own benchmark on a JdK RS-Ratio × RS-Momentum plane.
+(Live at https://rrg-sector-rotation.streamlit.app. The original asset-class top level
+was removed in Nov 2026 to keep the focus on equities.)
 
 > **Disclosure:** this is a **public approximation of the JdK RRG**, not a replica of
 > StockCharts'/Optuma's proprietary, universe-aware normalization. Quadrant placement
