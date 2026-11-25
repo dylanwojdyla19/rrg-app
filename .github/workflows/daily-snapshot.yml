@@ -32,9 +32,9 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      # Only what the pipeline needs; streamlit is optional in engine/data.py.
+      # Same pinned versions as the live app, so the job and app never disagree.
       - name: Install dependencies
-        run: pip install yfinance pandas numpy pytest
+        run: pip install -r requirements.txt
 
       # The math must still pass its invariants before we publish new numbers.
       - name: Run tests

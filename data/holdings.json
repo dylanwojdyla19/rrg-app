@@ -1,0 +1,1982 @@
+{
+ "CIBR": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "CRWD",
+    "name": "CrowdStrike Holdings Inc Class A",
+    "weight": 0.086064
+   },
+   {
+    "ticker": "PANW",
+    "name": "Palo Alto Networks Inc",
+    "weight": 0.075818
+   },
+   {
+    "ticker": "CSCO",
+    "name": "Cisco Systems Inc",
+    "weight": 0.074819
+   },
+   {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc",
+    "weight": 0.070919
+   },
+   {
+    "ticker": "FTNT",
+    "name": "Fortinet Inc",
+    "weight": 0.061952
+   },
+   {
+    "ticker": "OKTA",
+    "name": "Okta Inc Class A",
+    "weight": 0.045996
+   },
+   {
+    "ticker": "ZS",
+    "name": "Zscaler Inc",
+    "weight": 0.043822
+   },
+   {
+    "ticker": "NET",
+    "name": "Cloudflare Inc",
+    "weight": 0.038712
+   },
+   {
+    "ticker": "RBRK",
+    "name": "Rubrik Inc Class A Shares",
+    "weight": 0.030748
+   },
+   {
+    "ticker": "FFIV",
+    "name": "F5 Inc",
+    "weight": 0.028888
+   }
+  ]
+ },
+ "COPX": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "TECK-B.TO",
+    "name": "Teck Resources Ltd Class B (Sub Voting)",
+    "weight": 0.059484
+   },
+   {
+    "ticker": "BHP.AX",
+    "name": "BHP Group Ltd",
+    "weight": 0.057387
+   },
+   {
+    "ticker": "HBM.TO",
+    "name": "Hudbay Minerals Inc",
+    "weight": 0.055486
+   },
+   {
+    "ticker": "SCCO",
+    "name": "Southern Copper Corp",
+    "weight": 0.054899
+   },
+   {
+    "ticker": "GLEN.L",
+    "name": "Glencore PLC",
+    "weight": 0.052275
+   },
+   {
+    "ticker": "FCX",
+    "name": "Freeport-McMoRan Inc",
+    "weight": 0.052108
+   },
+   {
+    "ticker": "BOL.ST",
+    "name": "Boliden AB",
+    "weight": 0.04853
+   },
+   {
+    "ticker": "ANTO.L",
+    "name": "Antofagasta PLC",
+    "weight": 0.046785
+   },
+   {
+    "ticker": "FM.TO",
+    "name": "First Quantum Minerals Ltd",
+    "weight": 0.046704
+   },
+   {
+    "ticker": "KGH.WA",
+    "name": "KGHM Polska Miedz SA",
+    "weight": 0.045401
+   }
+  ]
+ },
+ "GDX": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "NEM",
+    "name": "Newmont Corp",
+    "weight": 0.116167
+   },
+   {
+    "ticker": "AEM.TO",
+    "name": "Agnico Eagle Mines Ltd",
+    "weight": 0.112587
+   },
+   {
+    "ticker": "ABX.TO",
+    "name": "Barrick Mining Corp",
+    "weight": 0.081809
+   },
+   {
+    "ticker": "WPM.TO",
+    "name": "Wheaton Precious Metals Corp",
+    "weight": 0.054752
+   },
+   {
+    "ticker": "FNV.TO",
+    "name": "Franco-Nevada Corp",
+    "weight": 0.054522
+   },
+   {
+    "ticker": "AU",
+    "name": "Anglogold Ashanti PLC",
+    "weight": 0.047298
+   },
+   {
+    "ticker": "GFI",
+    "name": "Gold Fields Ltd ADR",
+    "weight": 0.039242
+   },
+   {
+    "ticker": "K.TO",
+    "name": "Kinross Gold Corp",
+    "weight": 0.036478
+   },
+   {
+    "ticker": "NST.AX",
+    "name": "Northern Star Resources Ltd",
+    "weight": 0.032807
+   },
+   {
+    "ticker": "PAAS.TO",
+    "name": "Pan American Silver Corp",
+    "weight": 0.025543
+   }
+  ]
+ },
+ "IAI": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "GS",
+    "name": "The Goldman Sachs Group Inc",
+    "weight": 0.178733
+   },
+   {
+    "ticker": "MS",
+    "name": "Morgan Stanley",
+    "weight": 0.150956
+   },
+   {
+    "ticker": "SCHW",
+    "name": "Charles Schwab Corp",
+    "weight": 0.084647
+   },
+   {
+    "ticker": "SPGI",
+    "name": "S&P Global Inc",
+    "weight": 0.054016
+   },
+   {
+    "ticker": "CME",
+    "name": "CME Group Inc Class A",
+    "weight": 0.053451
+   },
+   {
+    "ticker": "ICE",
+    "name": "Intercontinental Exchange Inc",
+    "weight": 0.052259
+   },
+   {
+    "ticker": "MCO",
+    "name": "Moodys Corp",
+    "weight": 0.05041
+   },
+   {
+    "ticker": "NDAQ",
+    "name": "Nasdaq Inc",
+    "weight": 0.045085
+   },
+   {
+    "ticker": "MSCI",
+    "name": "MSCI Inc",
+    "weight": 0.043555
+   },
+   {
+    "ticker": "HOOD",
+    "name": "Robinhood Markets Inc Class A",
+    "weight": 0.03571
+   }
+  ]
+ },
+ "IBB": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "GILD",
+    "name": "Gilead Sciences Inc",
+    "weight": 0.089383
+   },
+   {
+    "ticker": "AMGN",
+    "name": "Amgen Inc",
+    "weight": 0.083078
+   },
+   {
+    "ticker": "VRTX",
+    "name": "Vertex Pharmaceuticals Inc",
+    "weight": 0.078658
+   },
+   {
+    "ticker": "REGN",
+    "name": "Regeneron Pharmaceuticals Inc",
+    "weight": 0.062365
+   },
+   {
+    "ticker": "MRNA",
+    "name": "Moderna Inc",
+    "weight": 0.054927
+   },
+   {
+    "ticker": "NTRA",
+    "name": "Natera Inc",
+    "weight": 0.037827
+   },
+   {
+    "ticker": "ARGX",
+    "name": "argenx SE ADR",
+    "weight": 0.033643
+   },
+   {
+    "ticker": "BIIB",
+    "name": "Biogen Inc",
+    "weight": 0.025223
+   },
+   {
+    "ticker": "RVMD",
+    "name": "Revolution Medicines Inc Ordinary Shares",
+    "weight": 0.02501
+   },
+   {
+    "ticker": "ILMN",
+    "name": "Illumina Inc",
+    "weight": 0.024102
+   }
+  ]
+ },
+ "IGV": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "PANW",
+    "name": "Palo Alto Networks Inc",
+    "weight": 0.09072
+   },
+   {
+    "ticker": "PLTR",
+    "name": "Palantir Technologies Inc Ordinary Shares - Class A",
+    "weight": 0.090238
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft Corp",
+    "weight": 0.088205
+   },
+   {
+    "ticker": "CRWD",
+    "name": "CrowdStrike Holdings Inc Class A",
+    "weight": 0.085506
+   },
+   {
+    "ticker": "ORCL",
+    "name": "Oracle Corp",
+    "weight": 0.067175
+   },
+   {
+    "ticker": "CRM",
+    "name": "Salesforce Inc",
+    "weight": 0.041289
+   },
+   {
+    "ticker": "NOW",
+    "name": "ServiceNow Inc",
+    "weight": 0.035269
+   },
+   {
+    "ticker": "ADBE",
+    "name": "Adobe Inc",
+    "weight": 0.035123
+   },
+   {
+    "ticker": "INTU",
+    "name": "Intuit Inc",
+    "weight": 0.032945
+   },
+   {
+    "ticker": "CDNS",
+    "name": "Cadence Design Systems Inc",
+    "weight": 0.031885
+   }
+  ]
+ },
+ "IHI": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "ABT",
+    "name": "Abbott Laboratories",
+    "weight": 0.179941
+   },
+   {
+    "ticker": "ISRG",
+    "name": "Intuitive Surgical Inc",
+    "weight": 0.149441
+   },
+   {
+    "ticker": "MDT",
+    "name": "Medtronic PLC",
+    "weight": 0.115715
+   },
+   {
+    "ticker": "BDX",
+    "name": "Becton Dickinson & Co",
+    "weight": 0.046825
+   },
+   {
+    "ticker": "GEHC",
+    "name": "GE HealthCare Technologies Inc Common Stock",
+    "weight": 0.045586
+   },
+   {
+    "ticker": "IDXX",
+    "name": "IDEXX Laboratories Inc",
+    "weight": 0.045524
+   },
+   {
+    "ticker": "EW",
+    "name": "Edwards Lifesciences Corp",
+    "weight": 0.045425
+   },
+   {
+    "ticker": "SYK",
+    "name": "Stryker Corp",
+    "weight": 0.045092
+   },
+   {
+    "ticker": "RMD",
+    "name": "ResMed Inc",
+    "weight": 0.043719
+   },
+   {
+    "ticker": "DXCM",
+    "name": "DexCom Inc",
+    "weight": 0.04093
+   }
+  ]
+ },
+ "ITA": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "GE",
+    "name": "GE Aerospace",
+    "weight": 0.200238
+   },
+   {
+    "ticker": "RTX",
+    "name": "RTX Corp",
+    "weight": 0.172194
+   },
+   {
+    "ticker": "BA",
+    "name": "Boeing Co",
+    "weight": 0.06825
+   },
+   {
+    "ticker": "LMT",
+    "name": "Lockheed Martin Corp",
+    "weight": 0.056873
+   },
+   {
+    "ticker": "NOC",
+    "name": "Northrop Grumman Corp",
+    "weight": 0.050641
+   },
+   {
+    "ticker": "GD",
+    "name": "General Dynamics Corp",
+    "weight": 0.049474
+   },
+   {
+    "ticker": "TDG",
+    "name": "TransDigm Group Inc",
+    "weight": 0.047708
+   },
+   {
+    "ticker": "HWM",
+    "name": "Howmet Aerospace Inc",
+    "weight": 0.040105
+   },
+   {
+    "ticker": "LHX",
+    "name": "L3Harris Technologies Inc",
+    "weight": 0.039698
+   },
+   {
+    "ticker": "HONA",
+    "name": "Honeywell Aerospace Inc",
+    "weight": 0.037519
+   }
+  ]
+ },
+ "ITB": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "DHI",
+    "name": "D.R. Horton Inc",
+    "weight": 0.17939
+   },
+   {
+    "ticker": "PHM",
+    "name": "PulteGroup Inc",
+    "weight": 0.112877
+   },
+   {
+    "ticker": "LEN",
+    "name": "Lennar Corp Class A",
+    "weight": 0.081279
+   },
+   {
+    "ticker": "NVR",
+    "name": "NVR Inc",
+    "weight": 0.072809
+   },
+   {
+    "ticker": "TOL",
+    "name": "Toll Brothers Inc",
+    "weight": 0.047212
+   },
+   {
+    "ticker": "HD",
+    "name": "The Home Depot Inc",
+    "weight": 0.045052
+   },
+   {
+    "ticker": "LOW",
+    "name": "Lowe's Companies Inc",
+    "weight": 0.044726
+   },
+   {
+    "ticker": "SHW",
+    "name": "Sherwin-Williams Co",
+    "weight": 0.044071
+   },
+   {
+    "ticker": "MAS",
+    "name": "Masco Corp",
+    "weight": 0.034263
+   },
+   {
+    "ticker": "IBP",
+    "name": "Installed Building Products Inc",
+    "weight": 0.024508
+   }
+  ]
+ },
+ "IYT": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "UNP",
+    "name": "Union Pacific Corp",
+    "weight": 0.18741
+   },
+   {
+    "ticker": "UBER",
+    "name": "Uber Technologies Inc",
+    "weight": 0.138303
+   },
+   {
+    "ticker": "CSX",
+    "name": "CSX Corp",
+    "weight": 0.099942
+   },
+   {
+    "ticker": "UPS",
+    "name": "United Parcel Service Inc Class B",
+    "weight": 0.04899
+   },
+   {
+    "ticker": "NSC",
+    "name": "Norfolk Southern Corp",
+    "weight": 0.047589
+   },
+   {
+    "ticker": "DAL",
+    "name": "Delta Air Lines Inc",
+    "weight": 0.045701
+   },
+   {
+    "ticker": "FDX",
+    "name": "FedEx Corp",
+    "weight": 0.045497
+   },
+   {
+    "ticker": "UAL",
+    "name": "United Airlines Holdings Inc",
+    "weight": 0.043696
+   },
+   {
+    "ticker": "ODFL",
+    "name": "Old Dominion Freight Line Inc Ordinary Shares",
+    "weight": 0.042584
+   },
+   {
+    "ticker": "EXPD",
+    "name": "Expeditors International of Washington Inc",
+    "weight": 0.035208
+   }
+  ]
+ },
+ "IYZ": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "CSCO",
+    "name": "Cisco Systems Inc",
+    "weight": 0.236984
+   },
+   {
+    "ticker": "VZ",
+    "name": "Verizon Communications Inc",
+    "weight": 0.113268
+   },
+   {
+    "ticker": "ANET",
+    "name": "Arista Networks Inc",
+    "weight": 0.106942
+   },
+   {
+    "ticker": "T",
+    "name": "AT&T Inc",
+    "weight": 0.042248
+   },
+   {
+    "ticker": "MSI",
+    "name": "Motorola Solutions Inc",
+    "weight": 0.040764
+   },
+   {
+    "ticker": "CMCSA",
+    "name": "Comcast Corp Class A",
+    "weight": 0.037301
+   },
+   {
+    "ticker": "SPCX",
+    "name": "Space Exploration Technologies Corp Class A",
+    "weight": 0.036435
+   },
+   {
+    "ticker": "TMUS",
+    "name": "T-Mobile US Inc",
+    "weight": 0.034763
+   },
+   {
+    "ticker": "CIEN",
+    "name": "Ciena Corp",
+    "weight": 0.032776
+   },
+   {
+    "ticker": "LITE",
+    "name": "Lumentum Holdings Inc",
+    "weight": 0.03245
+   }
+  ]
+ },
+ "KBE": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "CBC",
+    "name": "Central Bancompany Inc Class A",
+    "weight": 0.010734
+   },
+   {
+    "ticker": "FCNCA",
+    "name": "First Citizens BancShares Inc Class A",
+    "weight": 0.010591
+   },
+   {
+    "ticker": "CUBI",
+    "name": "Customers Bancorp Inc",
+    "weight": 0.010313
+   },
+   {
+    "ticker": "GBCI",
+    "name": "Glacier Bancorp Inc",
+    "weight": 0.010164
+   },
+   {
+    "ticker": "CATY",
+    "name": "Cathay General Bancorp",
+    "weight": 0.010056
+   },
+   {
+    "ticker": "UCB",
+    "name": "United Community Banks Inc",
+    "weight": 0.01004
+   },
+   {
+    "ticker": "TXCP",
+    "name": "Texas Capital Bancshares Inc",
+    "weight": 0.009991
+   },
+   {
+    "ticker": "OZK",
+    "name": "Bank OZK",
+    "weight": 0.009963
+   },
+   {
+    "ticker": "EQH",
+    "name": "Equitable Holdings Inc",
+    "weight": 0.009901
+   },
+   {
+    "ticker": "EBC",
+    "name": "Eastern Bankshares Inc Ordinary Shares",
+    "weight": 0.009878
+   }
+  ]
+ },
+ "KIE": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "KMPR",
+    "name": "Kemper Corp",
+    "weight": 0.021986
+   },
+   {
+    "ticker": "MRSH",
+    "name": "Marsh",
+    "weight": 0.020462
+   },
+   {
+    "ticker": "BWIN",
+    "name": "The Baldwin Insurance Group Inc Class A",
+    "weight": 0.0204
+   },
+   {
+    "ticker": "AJG",
+    "name": "Arthur J. Gallagher & Co",
+    "weight": 0.02037
+   },
+   {
+    "ticker": "EG",
+    "name": "Everest Group Ltd",
+    "weight": 0.020153
+   },
+   {
+    "ticker": "RYAN",
+    "name": "Ryan Specialty Holdings Inc Class A",
+    "weight": 0.020044
+   },
+   {
+    "ticker": "WTM",
+    "name": "White Mountains Insurance Group Ltd",
+    "weight": 0.019966
+   },
+   {
+    "ticker": "ACGL",
+    "name": "Arch Capital Group Ltd",
+    "weight": 0.019959
+   },
+   {
+    "ticker": "SIGI",
+    "name": "Selective Insurance Group Inc",
+    "weight": 0.019763
+   },
+   {
+    "ticker": "AFG",
+    "name": "American Financial Group Inc",
+    "weight": 0.019756
+   }
+  ]
+ },
+ "LIT": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "RIO",
+    "name": "Rio Tinto PLC ADR",
+    "weight": 0.229143
+   },
+   {
+    "ticker": "006400.KQ",
+    "name": "Samsung SDI Co Ltd",
+    "weight": 0.069998
+   },
+   {
+    "ticker": "6752.T",
+    "name": "Panasonic Holdings Corp",
+    "weight": 0.066831
+   },
+   {
+    "ticker": "002371.SZ",
+    "name": "NAURA Technology Group Co Ltd Class A",
+    "weight": 0.05747
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla Inc",
+    "weight": 0.057334
+   },
+   {
+    "ticker": "6762.T",
+    "name": "TDK Corp",
+    "weight": 0.057144
+   },
+   {
+    "ticker": "373220.KQ",
+    "name": "LG Energy Solution Ltd",
+    "weight": 0.049317
+   },
+   {
+    "ticker": "ALB",
+    "name": "Albemarle Corp",
+    "weight": 0.041515
+   },
+   {
+    "ticker": "300014.SZ",
+    "name": "EVE Energy Co Ltd Class A",
+    "weight": 0.036537
+   },
+   {
+    "ticker": "1211.HK",
+    "name": "BYD Co Ltd Class H",
+    "weight": 0.033515
+   }
+  ]
+ },
+ "OIH": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "SLB",
+    "name": "SLB Ltd",
+    "weight": 0.196063
+   },
+   {
+    "ticker": "BKR",
+    "name": "Baker Hughes Co Class A",
+    "weight": 0.107607
+   },
+   {
+    "ticker": "HAL",
+    "name": "Halliburton Co",
+    "weight": 0.065479
+   },
+   {
+    "ticker": "FTI",
+    "name": "TechnipFMC PLC",
+    "weight": 0.061349
+   },
+   {
+    "ticker": "RIG",
+    "name": "Transocean Ltd",
+    "weight": 0.057107
+   },
+   {
+    "ticker": "TS",
+    "name": "Tenaris SA ADR",
+    "weight": 0.054672
+   },
+   {
+    "ticker": "WFRD",
+    "name": "Weatherford International PLC Ordinary Shares - New",
+    "weight": 0.045759
+   },
+   {
+    "ticker": "SEI",
+    "name": "Solaris Energy Infrastructure Inc Class A",
+    "weight": 0.04522
+   },
+   {
+    "ticker": "VAL",
+    "name": "Valaris Ltd",
+    "weight": 0.044291
+   },
+   {
+    "ticker": "NE",
+    "name": "Noble Corp PLC Class A",
+    "weight": 0.043083
+   }
+  ]
+ },
+ "PAVE": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "EMR",
+    "name": "Emerson Electric Co",
+    "weight": 0.037002
+   },
+   {
+    "ticker": "NUE",
+    "name": "Nucor Corp",
+    "weight": 0.036917
+   },
+   {
+    "ticker": "FAST",
+    "name": "Fastenal Co",
+    "weight": 0.036563
+   },
+   {
+    "ticker": "DE",
+    "name": "Deere & Co",
+    "weight": 0.035995
+   },
+   {
+    "ticker": "URI",
+    "name": "United Rentals Inc",
+    "weight": 0.033371
+   },
+   {
+    "ticker": "UNP",
+    "name": "Union Pacific Corp",
+    "weight": 0.032471
+   },
+   {
+    "ticker": "CSX",
+    "name": "CSX Corp",
+    "weight": 0.032002
+   },
+   {
+    "ticker": "NSC",
+    "name": "Norfolk Southern Corp",
+    "weight": 0.031955
+   },
+   {
+    "ticker": "PWR",
+    "name": "Quanta Services Inc",
+    "weight": 0.030862
+   },
+   {
+    "ticker": "ROK",
+    "name": "Rockwell Automation Inc",
+    "weight": 0.030781
+   }
+  ]
+ },
+ "PEJ": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "MAR",
+    "name": "Marriott International Inc Class A",
+    "weight": 0.057396
+   },
+   {
+    "ticker": "SYY",
+    "name": "Sysco Corp",
+    "weight": 0.051075
+   },
+   {
+    "ticker": "SBUX",
+    "name": "Starbucks Corp",
+    "weight": 0.050406
+   },
+   {
+    "ticker": "DAL",
+    "name": "Delta Air Lines Inc",
+    "weight": 0.049289
+   },
+   {
+    "ticker": "LYV",
+    "name": "Live Nation Entertainment Inc",
+    "weight": 0.048971
+   },
+   {
+    "ticker": "VIK",
+    "name": "Viking Holdings Ltd",
+    "weight": 0.048765
+   },
+   {
+    "ticker": "ABNB",
+    "name": "Airbnb Inc Ordinary Shares - Class A",
+    "weight": 0.044375
+   },
+   {
+    "ticker": "EXPE",
+    "name": "Expedia Group Inc",
+    "weight": 0.043504
+   },
+   {
+    "ticker": "CBRL",
+    "name": "Cracker Barrel Old Country Store Inc",
+    "weight": 0.033758
+   },
+   {
+    "ticker": "AMC",
+    "name": "AMC Entertainment Holdings Inc Class A",
+    "weight": 0.032381
+   }
+  ]
+ },
+ "SKYY": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "P",
+    "name": "Everpure Inc Class A",
+    "weight": 0.050143
+   },
+   {
+    "ticker": "IBM",
+    "name": "International Business Machines Corp",
+    "weight": 0.037516
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft Corp",
+    "weight": 0.035501
+   },
+   {
+    "ticker": "NTNX",
+    "name": "Nutanix Inc Class A",
+    "weight": 0.035031
+   },
+   {
+    "ticker": "ANET",
+    "name": "Arista Networks Inc",
+    "weight": 0.03198
+   },
+   {
+    "ticker": "AMZN",
+    "name": "Amazon.com Inc",
+    "weight": 0.031881
+   },
+   {
+    "ticker": "ORCL",
+    "name": "Oracle Corp",
+    "weight": 0.031793
+   },
+   {
+    "ticker": "DOCN",
+    "name": "DigitalOcean Holdings Inc",
+    "weight": 0.030681
+   },
+   {
+    "ticker": "NTSK",
+    "name": "Netskope Inc Ordinary Shares - Class A",
+    "weight": 0.029056
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc Class A",
+    "weight": 0.028412
+   }
+  ]
+ },
+ "SMH": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corp",
+    "weight": 0.201925
+   },
+   {
+    "ticker": "TSM",
+    "name": "Taiwan Semiconductor Manufacturing Co Ltd ADR",
+    "weight": 0.095757
+   },
+   {
+    "ticker": "TXN",
+    "name": "Texas Instruments Inc",
+    "weight": 0.056981
+   },
+   {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc",
+    "weight": 0.056144
+   },
+   {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices Inc",
+    "weight": 0.05345
+   },
+   {
+    "ticker": "ADI",
+    "name": "Analog Devices Inc",
+    "weight": 0.049556
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology Inc",
+    "weight": 0.047497
+   },
+   {
+    "ticker": "ASML",
+    "name": "ASML Holding NV ADR",
+    "weight": 0.04496
+   },
+   {
+    "ticker": "KLAC",
+    "name": "KLA Corp",
+    "weight": 0.042775
+   },
+   {
+    "ticker": "SKHY",
+    "name": "SK hynix Inc ADR",
+    "weight": 0.041448
+   }
+  ]
+ },
+ "SOCL": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "META",
+    "name": "Meta Platforms Inc Class A",
+    "weight": 0.111126
+   },
+   {
+    "ticker": "035420.KS",
+    "name": "NAVER Corp",
+    "weight": 0.095305
+   },
+   {
+    "ticker": "0700.HK",
+    "name": "Tencent Holdings Ltd",
+    "weight": 0.090776
+   },
+   {
+    "ticker": "SPOT",
+    "name": "Spotify Technology SA",
+    "weight": 0.064793
+   },
+   {
+    "ticker": "RDDT",
+    "name": "Reddit Inc Class A Shares",
+    "weight": 0.063814
+   },
+   {
+    "ticker": "NTES",
+    "name": "NetEase Inc ADR",
+    "weight": 0.055744
+   },
+   {
+    "ticker": "PINS",
+    "name": "Pinterest Inc Class A",
+    "weight": 0.055292
+   },
+   {
+    "ticker": "1024.HK",
+    "name": "Kuaishou Technology Ordinary Shares - Class B",
+    "weight": 0.049529
+   },
+   {
+    "ticker": "MTCH",
+    "name": "Match Group Inc Ordinary Shares - New",
+    "weight": 0.049292
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc Class A",
+    "weight": 0.048381
+   }
+  ]
+ },
+ "SPY": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "AAPL",
+    "name": "Apple Inc",
+    "weight": 0.077007
+   },
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corp",
+    "weight": 0.075823
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft Corp",
+    "weight": 0.059332
+   },
+   {
+    "ticker": "AMZN",
+    "name": "Amazon.com Inc",
+    "weight": 0.036119
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc Class A",
+    "weight": 0.025141
+   },
+   {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc",
+    "weight": 0.023752
+   },
+   {
+    "ticker": "META",
+    "name": "Meta Platforms Inc Class A",
+    "weight": 0.020763
+   },
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet Inc Class C",
+    "weight": 0.020247
+   },
+   {
+    "ticker": "LLY",
+    "name": "Eli Lilly and Co",
+    "weight": 0.017367
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla Inc",
+    "weight": 0.017252
+   }
+  ]
+ },
+ "TAN": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "NXT",
+    "name": "Nextpower Inc",
+    "weight": 0.111707
+   },
+   {
+    "ticker": "FSLR",
+    "name": "First Solar Inc",
+    "weight": 0.097382
+   },
+   {
+    "ticker": "ENLT.TA",
+    "name": "Enlight Renewable Energy Ltd",
+    "weight": 0.083845
+   },
+   {
+    "ticker": "ENPH",
+    "name": "Enphase Energy Inc",
+    "weight": 0.060638
+   },
+   {
+    "ticker": "HASI",
+    "name": "HA Sustainable Infrastructure Capital Inc",
+    "weight": 0.054182
+   },
+   {
+    "ticker": "DORL.TA",
+    "name": "Doral Group Renewable Eneryy Resources Ltd Ordinary Shares",
+    "weight": 0.051504
+   },
+   {
+    "ticker": "CWEN",
+    "name": "Clearway Energy Inc Class C",
+    "weight": 0.04494
+   },
+   {
+    "ticker": "3800.HK",
+    "name": "GCL Technology Holdings Ltd",
+    "weight": 0.040097
+   },
+   {
+    "ticker": "RUN",
+    "name": "Sunrun Inc",
+    "weight": 0.039549
+   },
+   {
+    "ticker": "SEDG",
+    "name": "SolarEdge Technologies Inc",
+    "weight": 0.038895
+   }
+  ]
+ },
+ "XLB": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "LIN",
+    "name": "Linde PLC",
+    "weight": 0.128425
+   },
+   {
+    "ticker": "NEM",
+    "name": "Newmont Corp",
+    "weight": 0.060858
+   },
+   {
+    "ticker": "VMC",
+    "name": "Vulcan Materials Co",
+    "weight": 0.051359
+   },
+   {
+    "ticker": "ECL",
+    "name": "Ecolab Inc",
+    "weight": 0.050791
+   },
+   {
+    "ticker": "APD",
+    "name": "Air Products and Chemicals Inc",
+    "weight": 0.048907
+   },
+   {
+    "ticker": "MLM",
+    "name": "Martin Marietta Materials Inc",
+    "weight": 0.048605
+   },
+   {
+    "ticker": "FCX",
+    "name": "Freeport-McMoRan Inc",
+    "weight": 0.0486
+   },
+   {
+    "ticker": "NUE",
+    "name": "Nucor Corp",
+    "weight": 0.048456
+   },
+   {
+    "ticker": "STLD",
+    "name": "Steel Dynamics Inc",
+    "weight": 0.047549
+   },
+   {
+    "ticker": "SHW",
+    "name": "Sherwin-Williams Co",
+    "weight": 0.047335
+   }
+  ]
+ },
+ "XLC": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "META",
+    "name": "Meta Platforms Inc Class A",
+    "weight": 0.22004
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc Class A",
+    "weight": 0.110796
+   },
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet Inc Class C",
+    "weight": 0.089228
+   },
+   {
+    "ticker": "DIS",
+    "name": "The Walt Disney Co",
+    "weight": 0.055532
+   },
+   {
+    "ticker": "CMCSA",
+    "name": "Comcast Corp Class A",
+    "weight": 0.049243
+   },
+   {
+    "ticker": "TTWO",
+    "name": "Take-Two Interactive Software Inc",
+    "weight": 0.046969
+   },
+   {
+    "ticker": "VZ",
+    "name": "Verizon Communications Inc",
+    "weight": 0.046896
+   },
+   {
+    "ticker": "TMUS",
+    "name": "T-Mobile US Inc",
+    "weight": 0.046003
+   },
+   {
+    "ticker": "T",
+    "name": "AT&T Inc",
+    "weight": 0.044393
+   },
+   {
+    "ticker": "NFLX",
+    "name": "Netflix Inc",
+    "weight": 0.04258
+   }
+  ]
+ },
+ "XLE": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "XOM",
+    "name": "ExxonMobil Holdings Corp",
+    "weight": 0.242925
+   },
+   {
+    "ticker": "CVX",
+    "name": "Chevron Corp",
+    "weight": 0.18293
+   },
+   {
+    "ticker": "COP",
+    "name": "ConocoPhillips",
+    "weight": 0.072743
+   },
+   {
+    "ticker": "MPC",
+    "name": "Marathon Petroleum Corp",
+    "weight": 0.046412
+   },
+   {
+    "ticker": "PSX",
+    "name": "Phillips 66",
+    "weight": 0.045211
+   },
+   {
+    "ticker": "VLO",
+    "name": "Valero Energy Corp",
+    "weight": 0.042834
+   },
+   {
+    "ticker": "WMB",
+    "name": "Williams Companies Inc",
+    "weight": 0.041242
+   },
+   {
+    "ticker": "EOG",
+    "name": "EOG Resources Inc",
+    "weight": 0.040678
+   },
+   {
+    "ticker": "SLB",
+    "name": "SLB Ltd",
+    "weight": 0.037364
+   },
+   {
+    "ticker": "TRGP",
+    "name": "Targa Resources Corp",
+    "weight": 0.031642
+   }
+  ]
+ },
+ "XLF": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "BRK-B",
+    "name": "Berkshire Hathaway Inc Class B",
+    "weight": 0.126763
+   },
+   {
+    "ticker": "JPM",
+    "name": "JPMorgan Chase & Co",
+    "weight": 0.112405
+   },
+   {
+    "ticker": "V",
+    "name": "Visa Inc Class A",
+    "weight": 0.088427
+   },
+   {
+    "ticker": "MA",
+    "name": "Mastercard Inc Class A",
+    "weight": 0.064726
+   },
+   {
+    "ticker": "BAC",
+    "name": "Bank of America Corp",
+    "weight": 0.040805
+   },
+   {
+    "ticker": "GS",
+    "name": "The Goldman Sachs Group Inc",
+    "weight": 0.032677
+   },
+   {
+    "ticker": "WFC",
+    "name": "Wells Fargo & Co",
+    "weight": 0.031642
+   },
+   {
+    "ticker": "MS",
+    "name": "Morgan Stanley",
+    "weight": 0.027601
+   },
+   {
+    "ticker": "C",
+    "name": "Citigroup Inc",
+    "weight": 0.025811
+   },
+   {
+    "ticker": "AXP",
+    "name": "American Express Co",
+    "weight": 0.021089
+   }
+  ]
+ },
+ "XLI": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "GE",
+    "name": "GE Aerospace",
+    "weight": 0.058828
+   },
+   {
+    "ticker": "CAT",
+    "name": "Caterpillar Inc",
+    "weight": 0.05378
+   },
+   {
+    "ticker": "RTX",
+    "name": "RTX Corp",
+    "weight": 0.05059
+   },
+   {
+    "ticker": "GEV",
+    "name": "GE Vernova Inc",
+    "weight": 0.042924
+   },
+   {
+    "ticker": "UNP",
+    "name": "Union Pacific Corp",
+    "weight": 0.03393
+   },
+   {
+    "ticker": "DE",
+    "name": "Deere & Co",
+    "weight": 0.031859
+   },
+   {
+    "ticker": "ETN",
+    "name": "Eaton Corp PLC",
+    "weight": 0.026997
+   },
+   {
+    "ticker": "BA",
+    "name": "Boeing Co",
+    "weight": 0.025474
+   },
+   {
+    "ticker": "UBER",
+    "name": "Uber Technologies Inc",
+    "weight": 0.02504
+   },
+   {
+    "ticker": "LMT",
+    "name": "Lockheed Martin Corp",
+    "weight": 0.024306
+   }
+  ]
+ },
+ "XLK": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "AAPL",
+    "name": "Apple Inc",
+    "weight": 0.153123
+   },
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corp",
+    "weight": 0.150769
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft Corp",
+    "weight": 0.117986
+   },
+   {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc",
+    "weight": 0.04723
+   },
+   {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices Inc",
+    "weight": 0.045416
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology Inc",
+    "weight": 0.040358
+   },
+   {
+    "ticker": "PLTR",
+    "name": "Palantir Technologies Inc Ordinary Shares - Class A",
+    "weight": 0.026111
+   },
+   {
+    "ticker": "CSCO",
+    "name": "Cisco Systems Inc",
+    "weight": 0.025392
+   },
+   {
+    "ticker": "INTC",
+    "name": "Intel Corp",
+    "weight": 0.020142
+   },
+   {
+    "ticker": "AMAT",
+    "name": "Applied Materials Inc",
+    "weight": 0.019092
+   }
+  ]
+ },
+ "XLP": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "WMT",
+    "name": "Walmart Inc",
+    "weight": 0.111425
+   },
+   {
+    "ticker": "COST",
+    "name": "Costco Wholesale Corp",
+    "weight": 0.090877
+   },
+   {
+    "ticker": "PG",
+    "name": "Procter & Gamble Co",
+    "weight": 0.076026
+   },
+   {
+    "ticker": "KO",
+    "name": "Coca-Cola Co",
+    "weight": 0.073748
+   },
+   {
+    "ticker": "PM",
+    "name": "Philip Morris International Inc",
+    "weight": 0.065877
+   },
+   {
+    "ticker": "MO",
+    "name": "Altria Group Inc",
+    "weight": 0.046965
+   },
+   {
+    "ticker": "CL",
+    "name": "Colgate-Palmolive Co",
+    "weight": 0.044228
+   },
+   {
+    "ticker": "MDLZ",
+    "name": "Mondelez International Inc Class A",
+    "weight": 0.042511
+   },
+   {
+    "ticker": "PEP",
+    "name": "PepsiCo Inc",
+    "weight": 0.041056
+   },
+   {
+    "ticker": "TGT",
+    "name": "Target Corp",
+    "weight": 0.040047
+   }
+  ]
+ },
+ "XLRE": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "WELL",
+    "name": "Welltower Inc",
+    "weight": 0.113291
+   },
+   {
+    "ticker": "PLD",
+    "name": "Prologis Inc",
+    "weight": 0.081491
+   },
+   {
+    "ticker": "EQIX",
+    "name": "Equinix Inc",
+    "weight": 0.067019
+   },
+   {
+    "ticker": "AMT",
+    "name": "American Tower Corp",
+    "weight": 0.058627
+   },
+   {
+    "ticker": "PSA",
+    "name": "Public Storage",
+    "weight": 0.049721
+   },
+   {
+    "ticker": "SPG",
+    "name": "Simon Property Group Inc",
+    "weight": 0.048015
+   },
+   {
+    "ticker": "DLR",
+    "name": "Digital Realty Trust Inc",
+    "weight": 0.043103
+   },
+   {
+    "ticker": "VMRK",
+    "name": "Vivmark Residential",
+    "weight": 0.042964
+   },
+   {
+    "ticker": "VTR",
+    "name": "Ventas Inc",
+    "weight": 0.04279
+   },
+   {
+    "ticker": "O",
+    "name": "Realty Income Corp",
+    "weight": 0.042715
+   }
+  ]
+ },
+ "XLU": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "NEE",
+    "name": "NextEra Energy Inc",
+    "weight": 0.127679
+   },
+   {
+    "ticker": "SO",
+    "name": "Southern Co",
+    "weight": 0.078823
+   },
+   {
+    "ticker": "DUK",
+    "name": "Duke Energy Corp",
+    "weight": 0.072626
+   },
+   {
+    "ticker": "CEG",
+    "name": "Constellation Energy Corp",
+    "weight": 0.063215
+   },
+   {
+    "ticker": "AEP",
+    "name": "American Electric Power Co Inc",
+    "weight": 0.051831
+   },
+   {
+    "ticker": "D",
+    "name": "Dominion Energy Inc",
+    "weight": 0.042843
+   },
+   {
+    "ticker": "SRE",
+    "name": "Sempra",
+    "weight": 0.041148
+   },
+   {
+    "ticker": "ETR",
+    "name": "Entergy Corp",
+    "weight": 0.03757
+   },
+   {
+    "ticker": "XEL",
+    "name": "Xcel Energy Inc",
+    "weight": 0.036456
+   },
+   {
+    "ticker": "EXC",
+    "name": "Exelon Corp",
+    "weight": 0.034841
+   }
+  ]
+ },
+ "XLV": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "LLY",
+    "name": "Eli Lilly and Co",
+    "weight": 0.16881
+   },
+   {
+    "ticker": "JNJ",
+    "name": "Johnson & Johnson",
+    "weight": 0.097988
+   },
+   {
+    "ticker": "ABBV",
+    "name": "AbbVie Inc",
+    "weight": 0.077557
+   },
+   {
+    "ticker": "MRK",
+    "name": "Merck & Co Inc",
+    "weight": 0.054903
+   },
+   {
+    "ticker": "UNH",
+    "name": "UnitedHealth Group Inc",
+    "weight": 0.054367
+   },
+   {
+    "ticker": "TMO",
+    "name": "Thermo Fisher Scientific Inc",
+    "weight": 0.038356
+   },
+   {
+    "ticker": "AMGN",
+    "name": "Amgen Inc",
+    "weight": 0.037497
+   },
+   {
+    "ticker": "GILD",
+    "name": "Gilead Sciences Inc",
+    "weight": 0.031498
+   },
+   {
+    "ticker": "ABT",
+    "name": "Abbott Laboratories",
+    "weight": 0.02735
+   },
+   {
+    "ticker": "PFE",
+    "name": "Pfizer Inc",
+    "weight": 0.02589
+   }
+  ]
+ },
+ "XLY": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "AMZN",
+    "name": "Amazon.com Inc",
+    "weight": 0.212897
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla Inc",
+    "weight": 0.187846
+   },
+   {
+    "ticker": "HD",
+    "name": "The Home Depot Inc",
+    "weight": 0.054731
+   },
+   {
+    "ticker": "MCD",
+    "name": "McDonald's Corp",
+    "weight": 0.044551
+   },
+   {
+    "ticker": "TJX",
+    "name": "TJX Companies Inc",
+    "weight": 0.04074
+   },
+   {
+    "ticker": "SBUX",
+    "name": "Starbucks Corp",
+    "weight": 0.031066
+   },
+   {
+    "ticker": "LOW",
+    "name": "Lowe's Companies Inc",
+    "weight": 0.030815
+   },
+   {
+    "ticker": "BKNG",
+    "name": "Booking Holdings Inc",
+    "weight": 0.029256
+   },
+   {
+    "ticker": "MAR",
+    "name": "Marriott International Inc Class A",
+    "weight": 0.022431
+   },
+   {
+    "ticker": "HLT",
+    "name": "Hilton Worldwide Holdings Inc",
+    "weight": 0.021104
+   }
+  ]
+ },
+ "XOP": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "RRC",
+    "name": "Range Resources Corp",
+    "weight": 0.033108
+   },
+   {
+    "ticker": "APA",
+    "name": "APA Corp",
+    "weight": 0.029798
+   },
+   {
+    "ticker": "MUR",
+    "name": "Murphy Oil Corp",
+    "weight": 0.028907
+   },
+   {
+    "ticker": "XOM",
+    "name": "ExxonMobil Holdings Corp",
+    "weight": 0.028843
+   },
+   {
+    "ticker": "COP",
+    "name": "ConocoPhillips",
+    "weight": 0.028539
+   },
+   {
+    "ticker": "OVV",
+    "name": "Ovintiv Inc",
+    "weight": 0.028538
+   },
+   {
+    "ticker": "EOG",
+    "name": "EOG Resources Inc",
+    "weight": 0.028483
+   },
+   {
+    "ticker": "MPC",
+    "name": "Marathon Petroleum Corp",
+    "weight": 0.028166
+   },
+   {
+    "ticker": "CVX",
+    "name": "Chevron Corp",
+    "weight": 0.027868
+   },
+   {
+    "ticker": "PR",
+    "name": "Permian Resources Corp Class A",
+    "weight": 0.027867
+   }
+  ]
+ },
+ "XPH": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "MANE",
+    "name": "Veradermics Inc",
+    "weight": 0.028005
+   },
+   {
+    "ticker": "XERS",
+    "name": "Xeris Biopharma Holdings Inc",
+    "weight": 0.027755
+   },
+   {
+    "ticker": "PCRX",
+    "name": "Pacira BioSciences Inc",
+    "weight": 0.02534
+   },
+   {
+    "ticker": "LLY",
+    "name": "Eli Lilly and Co",
+    "weight": 0.025165
+   },
+   {
+    "ticker": "AMRX",
+    "name": "Amneal Pharmaceuticals Inc Ordinary Shares - Class A",
+    "weight": 0.024914
+   },
+   {
+    "ticker": "VTRS",
+    "name": "Viatris Inc",
+    "weight": 0.02305
+   },
+   {
+    "ticker": "MAZE",
+    "name": "Maze Therapeutics Inc",
+    "weight": 0.022768
+   },
+   {
+    "ticker": "LGND",
+    "name": "Ligand Pharmaceuticals Inc",
+    "weight": 0.022382
+   },
+   {
+    "ticker": "RPRX",
+    "name": "Royalty Pharma PLC Class A",
+    "weight": 0.022153
+   },
+   {
+    "ticker": "PRGO",
+    "name": "Perrigo Co PLC",
+    "weight": 0.021986
+   }
+  ]
+ },
+ "XRT": {
+  "as_of": "2026-11-24",
+  "holdings": [
+   {
+    "ticker": "KSS",
+    "name": "Kohl's Corp",
+    "weight": 0.018623
+   },
+   {
+    "ticker": "BBWI",
+    "name": "Bath & Body Works Inc",
+    "weight": 0.017257
+   },
+   {
+    "ticker": "VSXY",
+    "name": "Victoria's Secret & Co",
+    "weight": 0.017126
+   },
+   {
+    "ticker": "REAL",
+    "name": "The RealReal Inc",
+    "weight": 0.0168
+   },
+   {
+    "ticker": "ETSY",
+    "name": "Etsy Inc",
+    "weight": 0.016771
+   },
+   {
+    "ticker": "OLLI",
+    "name": "Ollie's Bargain Outlet Holdings Inc",
+    "weight": 0.016735
+   },
+   {
+    "ticker": "GME",
+    "name": "GameStop Corp Class A",
+    "weight": 0.016351
+   },
+   {
+    "ticker": "BJ",
+    "name": "BJ's Wholesale Club Holdings Inc",
+    "weight": 0.016272
+   },
+   {
+    "ticker": "CART",
+    "name": "Maplebear Inc",
+    "weight": 0.016245
+   },
+   {
+    "ticker": "KR",
+    "name": "The Kroger Co",
+    "weight": 0.015876
+   }
+  ]
+ }
+}

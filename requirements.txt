@@ -1,8 +1,9 @@
-# Pinned stack (master prompt Section 1)
-streamlit>=1.38
-yfinance>=0.2.50
-pandas>=2.0
-numpy>=1.26
-plotly>=5.20
-# Dev/CI — invariant tests (Section 7, Test 3)
+# Pinned to the versions the app was last tested with, so Streamlit Cloud
+# builds exactly what was verified (newer Streamlit releases remove APIs).
+streamlit==1.59.1
+yfinance==1.5.1
+pandas==3.0.3
+numpy==2.5.1
+plotly==6.9.0
+# Dev/CI — tests (Section 7, Test 3 + pipeline tests)
 pytest>=8.0

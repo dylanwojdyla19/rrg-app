@@ -85,8 +85,42 @@ def test_history_append_is_idempotent(tmp_path):
     assert out.loc[0, "rs_ratio"] == pytest.approx(98.5)
 
 
+def test_driver_contributions():
+    from engine import drivers
+    idx = pd.to_datetime(["2026-01-02", "2026-02-02", "2026-03-02"])
+    closes = pd.DataFrame({"AAA": [100, 105, 110], "BBB": [50, 50, 45]}, index=idx)
+    holdings = [{"ticker": "AAA", "name": "A", "weight": 0.20},
+                {"ticker": "BBB", "name": "B", "weight": 0.10},
+                {"ticker": "GONE", "name": "No data", "weight": 0.05}]
+    out = drivers.contributions(holdings, closes, idx[0], idx[-1])
+    assert list(out["Ticker"]) == ["AAA", "BBB", "GONE"]     # biggest driver first, no-data last
+    assert out.loc[0, "Contribution"] == pytest.approx(0.20 * 0.10)   # +10% × 20% weight
+    assert out.loc[1, "Contribution"] == pytest.approx(0.10 * -0.10)  # −10% × 10% weight
+    assert pd.isna(out.loc[2, "Contribution"])                # shown, not silently dropped
+
+
 def test_snapshot_refuses_mass_failure(monkeypatch):
     monkeypatch.setattr(data, "fetch_daily_closes",
                         lambda t: (pd.DataFrame(), {x: "blocked" for x in t}))
     with pytest.raises(RuntimeError):
-        snapshot.build_snapshot(("SPY", "XLK", "XLF"), previous=None)
+        snapshot.build_snapshot(("SPY", "XLK", "XLF"), previous=None, retry_pause=0)
+
+
+def test_snapshot_retries_failures_once(monkeypatch):
+    """A ticker that fails on the first pass but succeeds on the retry is kept."""
+    calls = []
+    idx = pd.bdate_range(end="2026-11-24", periods=5)
+
+    def flaky(tickers):
+        calls.append(tickers)
+        if len(calls) == 1:   # first pass: XLF "rate-limited"
+            ok = [t for t in tickers if t != "XLF"]
+            return pd.DataFrame({t: range(5) for t in ok}, index=idx), {"XLF": "429"}
+        return pd.DataFrame({t: range(5) for t in tickers}, index=idx), {}
+
+    monkeypatch.setattr(data, "fetch_daily_closes", flaky)
+    closes, failures, carried = snapshot.build_snapshot(("SPY", "XLF"), previous=None,
+                                                        retry_pause=0)
+    assert failures == {} and carried == []
+    assert sorted(closes.columns) == ["SPY", "XLF"]
+    assert calls[1] == ("XLF",)                      # only the failed ticker was retried

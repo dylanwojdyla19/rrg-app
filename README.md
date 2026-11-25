@@ -35,7 +35,13 @@ A GitHub Actions job (`.github/workflows/daily-snapshot.yml`) runs every weekday
 3. appends every level's RS-Ratio / RS-Momentum / quadrant to
    `data/rotation_history.csv` — a permanent day-by-day record of the rotation
    (the first run also backfilled ~2 years of completed weeks);
-4. writes `data/last_run.json` with anything that went wrong.
+4. saves each level's benchmark ETF top-10 holdings with weights to
+   `data/holdings.json` (and adds those stocks to the price snapshot) for the
+   app's **What's driving …** panel: each holding's return over the chosen window
+   and its contribution (weight × return, in points of the ETF's return);
+5. writes `data/last_run.json` with anything that went wrong.
+
+Failed tickers are retried once after a one-minute pause (Yahoo rate-limits bursts).
 
 If Yahoo blocks most requests, the job fails without touching yesterday's data and
 GitHub emails you. Single flaky tickers keep yesterday's prices and are listed in
@@ -44,7 +50,7 @@ GitHub emails you. Single flaky tickers keep yesterday's prices and are listed i
 
 Because the bot commits daily, run `git pull` before editing the repo locally.
 
-In the app, the sidebar shows the data date and source. The **Live prices** switch
+In the app, the ⚙ Settings menu shows the data date and source. The **Live prices** switch
 bypasses the snapshot and fetches from Yahoo directly for intraday checks. If the
 snapshot is more than 4 days old, the app fetches live automatically.
 
@@ -113,7 +119,9 @@ config/universe.json       # the 4-level pyramid (data, never logic)
 engine/data.py             # fetch, weekly resample, hygiene rules
 engine/calc.py             # pinned RRG formulas, nothing else
 engine/quadrant.py         # quadrant classification + pinned colors
-engine/snapshot.py         # daily pipeline: snapshot, rotation log, run status
+engine/snapshot.py         # daily pipeline: snapshot, holdings, rotation log, run status
+engine/drivers.py          # "what's driving this ETF": weight × return attribution
+data/holdings.json         # top-10 holdings + weights per benchmark ETF (bot-updated)
 scripts/daily_snapshot.py  # entry point for the daily GitHub Actions job
 data/closes.csv            # daily adjusted closes (bot-updated)
 data/rotation_history.csv  # day-by-day RRG readings for every level (bot-updated)

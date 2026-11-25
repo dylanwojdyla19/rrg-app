@@ -15,6 +15,8 @@ engine/calc.compute_rrg, exactly like the app, so the log matches the chart.
 """
 
 import json
+import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -22,10 +24,13 @@ import pandas as pd
 
 from engine import calc, data, quadrant
 
+import yfinance as yf  # noqa: E402 — after engine.data, which sets the Windows CA bundle
+
 ROOT = Path(__file__).resolve().parents[1]
 UNIVERSE_PATH = ROOT / "config" / "universe.json"
 HISTORY_PATH = ROOT / "data" / "rotation_history.csv"
 STATUS_PATH = ROOT / "data" / "last_run.json"
+HOLDINGS_PATH = ROOT / "data" / "holdings.json"
 
 # If more than this share of tickers fail to fetch, Yahoo is having a bad day
 # (or blocking us): abort WITHOUT overwriting yesterday's good snapshot.
@@ -46,16 +51,78 @@ def universe_tickers(universe: dict) -> tuple:
                         | {n["benchmark"] for n in nodes}))
 
 
-def build_snapshot(tickers: tuple, previous):
+def node_benchmarks(universe: dict) -> tuple:
+    """Every level's benchmark ETF (SPY, the sector ETFs, the subsector ETFs)."""
+    return tuple(sorted({n["benchmark"] for n in universe["nodes"].values()}))
+
+
+def load_holdings() -> dict:
+    """The saved holdings file, or {} if missing/unreadable."""
+    try:
+        return json.loads(HOLDINGS_PATH.read_text())
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def fetch_holdings(etfs: tuple, previous: dict):
     """
-    Fetch fresh closes for all tickers. Tickers that fail today keep their
-    column from the previous snapshot (so one flaky ticker doesn't vanish from
-    the app) and are listed as carried forward.
+    Top-10 holdings with weights for each ETF, from Yahoo's fund data — used by
+    the app's "What's driving this ETF" panel. An ETF whose fetch fails keeps
+    its previous entry (and is reported), so the panel never goes blank.
+
+    Returns (holdings dict, failures dict).
+    """
+    today = str(pd.Timestamp.today().date())
+    out, failures = {}, {}
+    for etf in etfs:
+        try:
+            top = yf.Ticker(etf).funds_data.top_holdings
+            if top is None or top.empty:
+                raise ValueError("no holdings returned")
+            out[etf] = {
+                "as_of": today,
+                "holdings": [
+                    {"ticker": normalize_symbol(str(sym)), "name": str(row["Name"]),
+                     "weight": round(float(row["Holding Percent"]), 6)}
+                    for sym, row in top.iterrows()
+                ],
+            }
+        except Exception as err:  # noqa: BLE001
+            failures[etf] = str(err)
+            if etf in previous:
+                out[etf] = previous[etf]
+    return out, failures
+
+
+def normalize_symbol(sym: str) -> str:
+    """Yahoo's fund data sometimes lists Hong Kong stocks as bare 5-digit codes
+    ('01211'); its price API needs the '1211.HK' form."""
+    if re.fullmatch(r"\d{5}", sym):
+        return f"{int(sym):04d}.HK"
+    return sym
+
+
+def holdings_tickers(holdings: dict) -> set:
+    return {h["ticker"] for entry in holdings.values() for h in entry["holdings"]}
+
+
+def build_snapshot(tickers: tuple, previous, retry_pause: float = 60):
+    """
+    Fetch fresh closes for all tickers. Failures get one more try after a
+    pause (Yahoo rate-limits bursts of requests, and a minute's wait usually
+    clears it). Tickers that still fail keep their column from the previous
+    snapshot (so a flaky ticker doesn't vanish from the app) and are listed
+    as carried forward.
 
     Returns (closes DataFrame, failures dict, carried list).
     Raises RuntimeError if too many tickers fail — protects the last good file.
     """
     fresh, failures = data.fetch_daily_closes(tickers)
+    if failures:
+        time.sleep(retry_pause)
+        retry, failures = data.fetch_daily_closes(tuple(failures))
+        if not retry.empty:
+            fresh = pd.concat([fresh, retry], axis=1)
     if len(failures) > MAX_FAILURE_SHARE * len(tickers):
         raise RuntimeError(
             f"{len(failures)}/{len(tickers)} tickers failed to fetch — refusing to "
@@ -140,7 +207,12 @@ def append_history(new_rows: pd.DataFrame, path: Path = HISTORY_PATH) -> int:
 def run(backfill: bool = False) -> dict:
     """Full daily pipeline. Returns the status dict (also written to last_run.json)."""
     universe = load_universe()
-    tickers = universe_tickers(universe)
+
+    # Holdings first: their stocks need prices too, for the drivers panel.
+    holdings, holdings_failures = fetch_holdings(node_benchmarks(universe), load_holdings())
+    HOLDINGS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    HOLDINGS_PATH.write_text(json.dumps(holdings, indent=1))
+    tickers = tuple(sorted(set(universe_tickers(universe)) | holdings_tickers(holdings)))
 
     closes, failures, carried = build_snapshot(tickers, data.load_snapshot())
     write_snapshot(closes)
@@ -152,9 +224,12 @@ def run(backfill: bool = False) -> dict:
 
     status = {
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
-        "as_of": str(closes.index[-1].date()),
+        # The US market's last close. (The snapshot's last row can be a day
+        # later: foreign holdings in Asia trade before New York opens.)
+        "as_of": str(closes["SPY"].dropna().index[-1].date()),
         "tickers": len(tickers),
         "fetch_failures": failures,
+        "holdings_failures": holdings_failures,
         "carried_forward_from_previous_snapshot": carried,
         "level_errors": errors,
         "history_rows_written": int(len(rows)),

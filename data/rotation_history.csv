@@ -29351,7 +29351,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_ita,ITA,BA,98.3487,97.7710,Lagging,daily
 2026-11-24,stk_ita,ITA,GD,101.9616,99.6383,Weakening,daily
 2026-11-24,stk_ita,ITA,GE,100.8457,100.1706,Leading,daily
-2026-11-24,stk_ita,ITA,HWM,97.9877,99.4739,Lagging,daily
+2026-11-24,stk_ita,ITA,HWM,97.9878,99.4738,Lagging,daily
 2026-11-24,stk_ita,ITA,LHX,100.2002,101.2913,Leading,daily
 2026-11-24,stk_ita,ITA,LMT,101.6769,100.6401,Leading,daily
 2026-11-24,stk_ita,ITA,NOC,101.2430,100.8485,Leading,daily
@@ -29392,7 +29392,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_kbe,KBE,HBAN,98.7110,99.7375,Lagging,daily
 2026-11-24,stk_kbe,KBE,JPM,100.2994,99.5758,Weakening,daily
 2026-11-24,stk_kbe,KBE,PNC,98.2401,99.0466,Lagging,daily
-2026-11-24,stk_kbe,KBE,RF,98.5225,100.0190,Improving,daily
+2026-11-24,stk_kbe,KBE,RF,98.5224,100.0190,Improving,daily
 2026-11-24,stk_kbe,KBE,TFC,99.7186,101.2263,Improving,daily
 2026-11-24,stk_kbe,KBE,USB,98.7858,98.8842,Lagging,daily
 2026-11-24,stk_kbe,KBE,WFC,100.4339,100.2076,Leading,daily
@@ -29404,7 +29404,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_kie,KIE,HIG,98.9442,100.5493,Improving,daily
 2026-11-24,stk_kie,KIE,MET,100.3651,99.1336,Weakening,daily
 2026-11-24,stk_kie,KIE,PGR,101.9168,100.2463,Leading,daily
-2026-11-24,stk_kie,KIE,PRU,99.9384,98.6225,Lagging,daily
+2026-11-24,stk_kie,KIE,PRU,99.9385,98.6225,Lagging,daily
 2026-11-24,stk_kie,KIE,TRV,100.5509,99.3488,Weakening,daily
 2026-11-24,stk_lit,LIT,ALB,98.8661,100.6131,Improving,daily
 2026-11-24,stk_lit,LIT,ENS,98.0551,99.0244,Lagging,daily
@@ -29507,7 +29507,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_xlu,XLU,AEP,98.5876,99.5016,Lagging,daily
 2026-11-24,stk_xlu,XLU,CEG,99.9384,99.6971,Lagging,daily
 2026-11-24,stk_xlu,XLU,D,100.1823,99.4800,Weakening,daily
-2026-11-24,stk_xlu,XLU,DUK,102.4191,100.7347,Leading,daily
+2026-11-24,stk_xlu,XLU,DUK,102.4191,100.7346,Leading,daily
 2026-11-24,stk_xlu,XLU,EXC,102.3251,101.4260,Leading,daily
 2026-11-24,stk_xlu,XLU,NEE,99.0228,101.0797,Improving,daily
 2026-11-24,stk_xlu,XLU,SO,101.4379,100.1859,Leading,daily
@@ -29554,7 +29554,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,sub_xle,XLE,XOP,98.9063,98.3913,Lagging,daily
 2026-11-24,sub_xlf,XLF,IAI,97.4047,99.4058,Lagging,daily
 2026-11-24,sub_xlf,XLF,KBE,97.9275,99.9411,Lagging,daily
-2026-11-24,sub_xlf,XLF,KIE,102.1091,101.8551,Leading,daily
+2026-11-24,sub_xlf,XLF,KIE,102.1091,101.8552,Leading,daily
 2026-11-24,sub_xli,XLI,ITA,99.0678,100.5964,Improving,daily
 2026-11-24,sub_xli,XLI,IYT,101.7248,101.0085,Leading,daily
 2026-11-24,sub_xli,XLI,PAVE,98.8387,100.9814,Improving,daily
