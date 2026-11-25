@@ -1,0 +1,11 @@
+{
+  "generated_at_utc": "2026-11-25 02:52",
+  "as_of": "2026-11-24",
+  "tickers": 302,
+  "fetch_failures": {},
+  "carried_forward_from_previous_snapshot": [],
+  "level_errors": {},
+  "history_rows_written": 29569,
+  "history_rows_total": 29569,
+  "backfilled": true
+}

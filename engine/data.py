@@ -28,7 +28,8 @@ import pandas as pd
 # point curl_cffi/requests at it BEFORE yfinance is imported. Deployed Linux
 # environments never have this file, so this block is a no-op there.
 # ---------------------------------------------------------------------------
-_WIN_CA_BUNDLE = Path(__file__).resolve().parents[1] / "config" / "windows-ca-bundle.pem"
+_ROOT = Path(__file__).resolve().parents[1]
+_WIN_CA_BUNDLE = _ROOT / "config" / "windows-ca-bundle.pem"
 if sys.platform == "win32" and _WIN_CA_BUNDLE.exists():
     os.environ.setdefault("CURL_CA_BUNDLE", str(_WIN_CA_BUNDLE))
     os.environ.setdefault("SSL_CERT_FILE", str(_WIN_CA_BUNDLE))
@@ -60,6 +61,14 @@ MIN_HISTORY_WEEKS = 40     # hygiene rule 3: exclude tickers with < 40 weeks of 
 # 2 weeks ~ 10 trading days; 40 weeks ~ 200 trading days.
 MAX_FFILL_DAYS = 10
 MIN_HISTORY_DAYS = 200
+
+# --- Daily snapshot (written by scripts/daily_snapshot.py via GitHub Actions) ---
+# The app reads prices from this committed file first, so page loads don't depend
+# on Yahoo answering (Yahoo intermittently rate-limits shared cloud servers).
+SNAPSHOT_PATH = _ROOT / "data" / "closes.csv"
+# A snapshot older than this many calendar days is treated as stale and the app
+# fetches live instead. 4 days covers a weekend plus a Monday holiday.
+SNAPSHOT_MAX_AGE_DAYS = 4
 
 
 def _download_one(ticker: str) -> pd.Series:
@@ -123,6 +132,83 @@ def fetch_daily_closes(tickers: tuple) -> tuple:
     return daily, failures
 
 
+@_cache
+def _read_snapshot(path_str: str, mtime: float) -> pd.DataFrame:
+    """
+    Read the committed daily-closes snapshot. `mtime` is part of the cache key
+    so a newly written/pulled file is picked up immediately instead of serving
+    a stale cached copy.
+    """
+    df = pd.read_csv(path_str, index_col=0, parse_dates=True)
+    df.index = pd.to_datetime(df.index).normalize()
+    return df.sort_index()
+
+
+def load_snapshot():
+    """Return the snapshot DataFrame, or None if it is missing or unreadable."""
+    if not SNAPSHOT_PATH.exists():
+        return None
+    try:
+        snap = _read_snapshot(str(SNAPSHOT_PATH), SNAPSHOT_PATH.stat().st_mtime)
+    except Exception:  # noqa: BLE001 — a corrupt file just means "fetch live instead"
+        return None
+    return snap if not snap.empty else None
+
+
+def snapshot_is_fresh(snap: pd.DataFrame, today=None) -> bool:
+    """True if the snapshot's last close is within SNAPSHOT_MAX_AGE_DAYS of today."""
+    today = pd.Timestamp(today).normalize() if today is not None else pd.Timestamp.today().normalize()
+    return (today - snap.index[-1]).days <= SNAPSHOT_MAX_AGE_DAYS
+
+
+def get_daily_closes(tickers: tuple, prefer_live: bool = False):
+    """
+    Daily adjusted closes from the best available source:
+
+      1. the committed daily snapshot, if it is fresh (normal case — no network);
+      2. live Yahoo for anything the snapshot lacks, or for everything if the
+         snapshot is stale/missing or `prefer_live` is set;
+      3. if a live fetch fails, the (possibly stale) snapshot as a last resort —
+         reported in info["stale_fallback"] so the UI can warn about it.
+
+    Returns (daily DataFrame, failures dict, info dict). Failures that could not
+    be rescued are still returned so the hygiene layer excludes + warns.
+    """
+    snap = load_snapshot()
+    use_snapshot = (not prefer_live) and snap is not None and snapshot_is_fresh(snap)
+    info = {
+        "source": "snapshot" if use_snapshot else "live",
+        "snapshot_date": snap.index[-1] if snap is not None else None,
+        "stale_fallback": [],
+    }
+
+    parts = []
+    if use_snapshot:
+        from_snap = [t for t in tickers if t in snap.columns and snap[t].notna().any()]
+        parts.append(snap[from_snap])
+        need_live = tuple(t for t in tickers if t not in from_snap)
+    else:
+        need_live = tuple(tickers)
+
+    failures = {}
+    if need_live:
+        live, failures = fetch_daily_closes(need_live)
+        if not live.empty:
+            parts.append(live)
+
+    # Last resort: rescue live failures from the snapshot even if it is stale.
+    if failures and snap is not None:
+        rescued = [t for t in failures if t in snap.columns and snap[t].notna().any()]
+        if rescued:
+            parts.append(snap[rescued])
+            for t in rescued:
+                failures.pop(t)
+            info["stale_fallback"] = rescued
+
+    daily = pd.concat(parts, axis=1).sort_index() if parts else pd.DataFrame()
+    return daily, failures, info
+
+
 def to_weekly(daily: pd.DataFrame) -> pd.DataFrame:
     """
     Resample daily closes to WEEKLY (Friday) closes — the pinned RRG standard.
@@ -148,7 +234,8 @@ def _max_consecutive_nans(s: pd.Series) -> int:
     return int(runs.max()) if not runs.empty else 0
 
 
-def prepare_level(tickers: tuple, benchmark: str, daily_mode: bool = False):
+def prepare_level(tickers: tuple, benchmark: str, daily_mode: bool = False,
+                  prefer_live: bool = False):
     """
     Fetch + clean everything needed to compute an RRG for one level of the
     pyramid. This is THE entry point the UI and validation scripts use.
@@ -157,7 +244,10 @@ def prepare_level(tickers: tuple, benchmark: str, daily_mode: bool = False):
       prices    — DataFrame of clean weekly (or daily) closes, one col/ticker
       bench     — matching Series for the benchmark
       excluded  — dict {ticker: human-readable reason} for the warning chips
-      as_of     — timestamp of the last observation (for "Data as of" display)
+      as_of     — date of the benchmark's last actual DAILY close. (The last
+                  weekly bar is labeled with the upcoming Friday while the
+                  week is still in progress, so the label is not the as-of date.)
+      info      — data-source details from get_daily_closes (snapshot vs live)
 
     Raises RuntimeError if the BENCHMARK itself can't be fetched — nothing
     can be computed without it, so that failure must be loud.
@@ -167,7 +257,7 @@ def prepare_level(tickers: tuple, benchmark: str, daily_mode: bool = False):
     min_history = MIN_HISTORY_DAYS if daily_mode else MIN_HISTORY_WEEKS
 
     all_tickers = tuple(dict.fromkeys(list(tickers) + [benchmark]))  # dedupe, keep order
-    daily, failures = fetch_daily_closes(all_tickers)
+    daily, failures, info = get_daily_closes(all_tickers, prefer_live)
 
     if benchmark in failures or benchmark not in getattr(daily, "columns", []):
         raise RuntimeError(
@@ -207,5 +297,6 @@ def prepare_level(tickers: tuple, benchmark: str, daily_mode: bool = False):
         clean_cols[t] = s.ffill(limit=max_gap)
 
     prices = pd.DataFrame(clean_cols, index=bench.index)
-    as_of = bench.index[-1] if len(bench) else None
-    return prices, bench, excluded, as_of
+    daily_bench = daily[benchmark].dropna()
+    as_of = daily_bench.index[-1] if len(daily_bench) else None
+    return prices, bench, excluded, as_of, info

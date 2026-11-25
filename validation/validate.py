@@ -33,7 +33,7 @@ BENCH = "SPY"
 
 def _compute_sectors():
     """Fetch + compute the 11-sector weekly RRG vs SPY once, reused by tests 1 & 2."""
-    prices, bench, excluded, as_of = data.prepare_level(tuple(SECTORS), BENCH)
+    prices, bench, excluded, as_of, _ = data.prepare_level(tuple(SECTORS), BENCH)
     if excluded:
         print(f"  WARNING — excluded tickers: {excluded}")
     ratio, momentum = calc.compute_rrg(prices, bench)
@@ -164,7 +164,7 @@ def test4():
 
     ok = True
     for t in picks:
-        prices, bench, excluded, _ = data.prepare_level((t,), "SPY")
+        prices, bench, excluded, _, _ = data.prepare_level((t,), "SPY")
         if t not in prices.columns:
             print(f"{t}: EXCLUDED by hygiene ({excluded.get(t)}) — pick another ticker")
             ok = False

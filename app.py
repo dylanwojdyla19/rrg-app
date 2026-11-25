@@ -108,7 +108,16 @@ bench_choice = st.sidebar.selectbox(
 )
 benchmark = default_bench if bench_choice.startswith("Default") else bench_choice
 
-if st.sidebar.button("🔄 Refresh data (clear cache)"):
+# Normally the app reads the daily snapshot (updated every weekday after the
+# close). This switch fetches straight from Yahoo instead — useful intraday.
+prefer_live = st.sidebar.toggle(
+    "Live prices (intraday)",
+    help="Off: use the daily snapshot saved after each market close (fast, reliable). "
+    "On: fetch the latest prices from Yahoo right now (slower; can fail if Yahoo "
+    "rate-limits the server).",
+)
+
+if st.sidebar.button("🔄 Reload data"):
     st.cache_data.clear()
     st.rerun()
 
@@ -116,14 +125,26 @@ if st.sidebar.button("🔄 Refresh data (clear cache)"):
 # Fetch + compute (all hygiene rules live in engine/data.py)
 # ---------------------------------------------------------------------------
 tickers = tuple(m["ticker"] for m in members if m["ticker"] != benchmark)
-try:
-    prices, bench_series, excluded, as_of = data.prepare_level(tickers, benchmark, daily_mode)
-except RuntimeError as err:
-    st.error(str(err))
-    st.stop()
+with st.spinner("Loading prices…"):
+    try:
+        prices, bench_series, excluded, as_of, src = data.prepare_level(
+            tickers, benchmark, daily_mode, prefer_live)
+    except RuntimeError as err:
+        st.error(str(err))
+        st.stop()
 
+# Data provenance in the sidebar: what date, and where it came from.
 if as_of is not None:
-    st.sidebar.caption(f"Data as of **{as_of.date()}** · weekly = Friday close")
+    source_label = ("daily snapshot, updated each weekday after the close"
+                    if src["source"] == "snapshot" else "live from Yahoo")
+    st.sidebar.caption(f"Data as of **{as_of:%b %d, %Y}** close · {source_label}")
+if src["stale_fallback"]:
+    st.sidebar.warning(
+        "Yahoo didn't respond for " + ", ".join(src["stale_fallback"]) +
+        f" — showing the saved snapshot from {src['snapshot_date']:%b %d} instead.")
+elif src["source"] == "live" and not prefer_live and src["snapshot_date"] is not None:
+    st.sidebar.info(f"The daily snapshot is out of date (last {src['snapshot_date']:%b %d}), "
+                    "so prices were fetched live.")
 
 # Hygiene rule 1/3/4: excluded tickers get a visible warning chip — never silent.
 if excluded:
@@ -196,9 +217,15 @@ fig.add_vline(x=100, line_width=1, line_color="#888")
 for i, (t, xy) in enumerate(plotted):
     color = PALETTE[i % len(PALETTE)]
     n = len(xy)
-    # Per-point customdata: [ticker, date]. The ticker drives click-to-drill;
-    # the date shows in the hover tooltip so every tail dot is identifiable.
-    dates = xy.index.strftime("%b %d, %Y")
+    # Per-point customdata: [ticker, date label]. The ticker drives click-to-drill;
+    # the label shows in the hover tooltip so every tail dot is identifiable.
+    # The newest weekly bar is labeled with the upcoming Friday while that week
+    # is still trading, so say "week to date" instead of a future date.
+    if daily_mode:
+        dates = [f"{d:%b %d, %Y}" for d in xy.index]
+    else:
+        dates = [f"week to date (through {as_of:%b %d, %Y})" if d > as_of
+                 else f"week ending {d:%b %d, %Y}" for d in xy.index]
     fig.add_trace(go.Scatter(
         x=xy["x"], y=xy["y"],
         mode="lines+markers+text",
@@ -213,7 +240,7 @@ for i, (t, xy) in enumerate(plotted):
         textposition="top center",
         textfont=dict(color=color, size=13),
         customdata=np.column_stack([[t] * n, dates]),
-        hovertemplate=(f"<b>{t}</b> · week ending %{{customdata[1]}}<br>"
+        hovertemplate=(f"<b>{t}</b> · %{{customdata[1]}}<br>"
                        "RS-Ratio %{x:.2f} · RS-Momentum %{y:.2f}<extra></extra>"),
     ))
     # Direction arrow: consecutive weekly points sit almost on top of each
@@ -360,6 +387,73 @@ styled = table.style.map(
 ).format({"RS-Ratio": "{:.2f}", "RS-Momentum": "{:.2f}", "Δ RS-Ratio (4w)": "{:+.2f}"})
 st.dataframe(styled, use_container_width=True, hide_index=True)
 
+# ---------------------------------------------------------------------------
+# Quadrant history: which quadrant each security sat in over the last 12
+# observations — the quickest way to see WHEN money rotated in or out.
+# ---------------------------------------------------------------------------
+st.subheader("Quadrant history")
+HIST_N = 12
+hist_index = ratio.index[-HIST_N:]
+grid = pd.DataFrame(index=table["Ticker"])  # same order as the table above
+for d in hist_index:
+    if daily_mode:
+        col = f"{d:%b %d}"
+    else:
+        col = f"{as_of:%b %d}*" if d > as_of else f"{d:%b %d}"
+    grid[col] = [
+        quadrant.classify(ratio.at[d, t], momentum.at[d, t])
+        if pd.notna(ratio.at[d, t]) and pd.notna(momentum.at[d, t]) else ""
+        for t in grid.index
+    ]
+
+QUAD_SHORT = {"Leading": "LEAD", "Weakening": "WEAK", "Lagging": "LAG", "Improving": "IMPR"}
+
+
+def _quad_cell(q: str) -> str:
+    """Solid quadrant color with white text — reads like a heat strip."""
+    c = quadrant.QUADRANT_COLORS.get(q)
+    return f"background-color: {c}; color: white; font-weight: 600;" if c else ""
+
+
+st.dataframe(
+    grid.style.map(_quad_cell).format(lambda q: QUAD_SHORT.get(q, q)),
+    use_container_width=True,
+)
+period_word = "trading days" if daily_mode else "weeks"
+st.caption(
+    f"Last {len(hist_index)} {period_word}, newest on the right. Clockwise rotation reads "
+    "IMPR → LEAD → WEAK → LAG."
+    + ("" if daily_mode or hist_index[-1] <= as_of
+       else f" * = week in progress, through {as_of:%b %d}.")
+)
+
+# Download the durable rotation log written by the daily job (one row per
+# security per day, plus ~2 years of weekly backfill).
+history_path = Path(__file__).parent / "data" / "rotation_history.csv"
+
+
+@st.cache_data(show_spinner=False)
+def _load_log(path_str: str, mtime: float) -> pd.DataFrame:
+    """mtime in the key so each day's new log is picked up after a redeploy."""
+    return pd.read_csv(path_str)
+
+
+if history_path.exists():
+    log = _load_log(str(history_path), history_path.stat().st_mtime)
+    level_log = log[log["level"] == node_key]
+    dl1, dl2 = st.columns(2)
+    dl1.download_button(
+        f"⬇ Rotation log — {node['label']} ({len(level_log):,} rows)",
+        level_log.to_csv(index=False), file_name=f"rotation_log_{node_key}.csv",
+        mime="text/csv", use_container_width=True,
+        help=f"Benchmark {default_bench}. Every daily reading of this level, oldest first.",
+    )
+    dl2.download_button(
+        f"⬇ Full rotation log — all levels ({len(log):,} rows)",
+        log.to_csv(index=False), file_name="rotation_history.csv",
+        mime="text/csv", use_container_width=True,
+    )
+
 with st.expander("How to read this chart"):
     st.markdown(
         """
@@ -380,5 +474,6 @@ with st.expander("How to read this chart"):
 st.caption(
     f"Public approximation of JdK RRG — validated vs StockCharts on {VALIDATED_ON}, "
     f"{AGREEMENT}/11 quadrant agreement. Not a replica of StockCharts' proprietary "
-    "normalization. Data: Yahoo Finance adjusted closes."
+    "normalization. Data: Yahoo Finance adjusted closes, refreshed every weekday after "
+    "the US close."
 )

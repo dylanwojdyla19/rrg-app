@@ -92,7 +92,7 @@
       "benchmark": "XLC",
       "members": [
         { "ticker": "SOCL", "name": "Social Media", "drill": "stk_socl" },
-        { "ticker": "PBS", "name": "Media", "drill": "stk_pbs" }
+        { "ticker": "IYZ", "name": "Telecom", "drill": "stk_iyz" }
       ]
     },
     "sub_xlb": {
@@ -445,21 +445,21 @@
         { "ticker": "DUOL", "name": "Duolingo" }
       ]
     },
-    "stk_pbs": {
-      "label": "Media Stocks",
-      "benchmark": "PBS",
-      "holdings_as_of": "2026-01-01",
+    "stk_iyz": {
+      "label": "Telecom Stocks",
+      "benchmark": "IYZ",
+      "holdings_as_of": "2026-11-24",
       "members": [
-        { "ticker": "GOOGL", "name": "Alphabet" },
-        { "ticker": "META", "name": "Meta" },
-        { "ticker": "NFLX", "name": "Netflix" },
-        { "ticker": "DIS", "name": "Disney" },
+        { "ticker": "CSCO", "name": "Cisco" },
+        { "ticker": "VZ", "name": "Verizon" },
+        { "ticker": "ANET", "name": "Arista Networks" },
+        { "ticker": "T", "name": "AT&T" },
+        { "ticker": "MSI", "name": "Motorola Solutions" },
         { "ticker": "CMCSA", "name": "Comcast" },
-        { "ticker": "LYV", "name": "Live Nation" },
-        { "ticker": "EA", "name": "Electronic Arts" },
-        { "ticker": "TTWO", "name": "Take-Two" },
-        { "ticker": "WBD", "name": "Warner Bros. Discovery" },
-        { "ticker": "FOXA", "name": "Fox" }
+        { "ticker": "SPCX", "name": "SpaceX" },
+        { "ticker": "TMUS", "name": "T-Mobile" },
+        { "ticker": "CIEN", "name": "Ciena" },
+        { "ticker": "LITE", "name": "Lumentum" }
       ]
     },
     "stk_gdx": {

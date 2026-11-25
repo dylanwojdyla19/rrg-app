@@ -1,0 +1,57 @@
+# Daily data refresh for the RRG app.
+# Every weekday after the US close, fetch fresh prices for the whole universe,
+# save them to data/closes.csv, append today's RRG readings to
+# data/rotation_history.csv, and commit the result. Streamlit Community Cloud
+# redeploys on every push, so the live app picks up the new data automatically.
+
+name: Daily RRG snapshot
+
+on:
+  schedule:
+    # 22:30 UTC Mon–Fri = 5:30pm New York in winter (6:30pm in summer),
+    # comfortably after the 4pm close. GitHub may start scheduled jobs late.
+    - cron: "30 22 * * 1-5"
+  workflow_dispatch: {}   # "Run workflow" button in the Actions tab for manual runs
+
+permissions:
+  contents: write         # needed to commit the refreshed data files
+
+concurrency:
+  group: daily-snapshot   # never run two refreshes at once (they would collide on push)
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Only what the pipeline needs; streamlit is optional in engine/data.py.
+      - name: Install dependencies
+        run: pip install yfinance pandas numpy pytest
+
+      # The math must still pass its invariants before we publish new numbers.
+      - name: Run tests
+        run: python -m pytest tests/ -q
+
+      - name: Build snapshot and rotation log
+        run: python scripts/daily_snapshot.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No data changes (market holiday?) — nothing to commit."
+            exit 0
+          fi
+          git commit -m "Daily RRG snapshot $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
+          git push origin HEAD:main
