@@ -29389,10 +29389,10 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_kbe,KBE,BAC,97.9954,98.7791,Lagging,daily
 2026-11-24,stk_kbe,KBE,C,97.6501,99.9592,Lagging,daily
 2026-11-24,stk_kbe,KBE,FITB,98.8914,99.9431,Lagging,daily
-2026-11-24,stk_kbe,KBE,HBAN,98.7110,99.7376,Lagging,daily
+2026-11-24,stk_kbe,KBE,HBAN,98.7110,99.7375,Lagging,daily
 2026-11-24,stk_kbe,KBE,JPM,100.2994,99.5758,Weakening,daily
 2026-11-24,stk_kbe,KBE,PNC,98.2401,99.0466,Lagging,daily
-2026-11-24,stk_kbe,KBE,RF,98.5224,100.0190,Improving,daily
+2026-11-24,stk_kbe,KBE,RF,98.5225,100.0190,Improving,daily
 2026-11-24,stk_kbe,KBE,TFC,99.7186,101.2263,Improving,daily
 2026-11-24,stk_kbe,KBE,USB,98.7858,98.8842,Lagging,daily
 2026-11-24,stk_kbe,KBE,WFC,100.4339,100.2076,Leading,daily
@@ -29407,7 +29407,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,stk_kie,KIE,PRU,99.9384,98.6225,Lagging,daily
 2026-11-24,stk_kie,KIE,TRV,100.5509,99.3488,Weakening,daily
 2026-11-24,stk_lit,LIT,ALB,98.8661,100.6131,Improving,daily
-2026-11-24,stk_lit,LIT,ENS,98.0550,99.0244,Lagging,daily
+2026-11-24,stk_lit,LIT,ENS,98.0551,99.0244,Lagging,daily
 2026-11-24,stk_lit,LIT,GM,102.2391,99.8054,Weakening,daily
 2026-11-24,stk_lit,LIT,LAC,98.0701,99.9156,Lagging,daily
 2026-11-24,stk_lit,LIT,MP,100.6647,100.7895,Leading,daily
@@ -29549,7 +29549,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,sub_xlb,XLB,LIT,97.8410,100.5505,Improving,daily
 2026-11-24,sub_xlc,XLC,IYZ,98.2627,99.1934,Lagging,daily
 2026-11-24,sub_xlc,XLC,SOCL,99.7711,99.8846,Lagging,daily
-2026-11-24,sub_xle,XLE,OIH,97.9477,101.1422,Improving,daily
+2026-11-24,sub_xle,XLE,OIH,97.9477,101.1423,Improving,daily
 2026-11-24,sub_xle,XLE,TAN,98.1648,101.3792,Improving,daily
 2026-11-24,sub_xle,XLE,XOP,98.9063,98.3913,Lagging,daily
 2026-11-24,sub_xlf,XLF,IAI,97.4047,99.4058,Lagging,daily
@@ -29564,7 +29564,7 @@ date,level,benchmark,ticker,rs_ratio,rs_momentum,quadrant,kind
 2026-11-24,sub_xlk,XLK,SMH,97.6294,100.4592,Improving,daily
 2026-11-24,sub_xlv,XLV,IBB,97.4313,98.0125,Lagging,daily
 2026-11-24,sub_xlv,XLV,IHI,100.9837,102.5100,Leading,daily
-2026-11-24,sub_xlv,XLV,XPH,97.3672,99.5622,Lagging,daily
+2026-11-24,sub_xlv,XLV,XPH,97.3672,99.5623,Lagging,daily
 2026-11-24,sub_xly,XLY,ITB,100.4290,100.3764,Leading,daily
 2026-11-24,sub_xly,XLY,PEJ,99.8906,99.3363,Lagging,daily
 2026-11-24,sub_xly,XLY,XRT,100.5003,99.9823,Weakening,daily
